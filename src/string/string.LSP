@@ -8,7 +8,7 @@
 ;;;
 ;;; @exempleDescription Receives a string and splits into parts with a reference delimiter.
 ;;;
-;;; @exempleCode (strSplit "testing-the-function" "-")
+;;; @exempleCode (str-split "testing-the-function" "-")
 ;;; @exempleCode ("testing" "the" "function")
 ;;;
 (defun str-split(string delimiter / symbol-position first-part list-splits)

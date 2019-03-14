@@ -8,9 +8,9 @@
 ;;; @exempleDescription Receives an association list and returns only the keys.
 ;;;
 ;;; @exempleCode (setq ttt '(("a" 1) ("b" 2) ("c" 5) ("d" 8) ("e" 6) ("s" 9)))
-;;; @exempleCode (onlyKeys ttt)
+;;; @exempleCode (only-keys ttt)
 ;;;
-(defun onlyKeys(association-list)
+(defun only-keys(association-list)
   (mapcar 'car association-list))
 
 ;;; @description Receives an association list and returns only values.
@@ -22,9 +22,9 @@
 ;;; @exempleDescription Receives an association list and returns only the values.
 ;;;
 ;;; @exempleCode (setq ttt '(("a" 1) ("b" 2) ("c" 5) ("d" 8) ("e" 6) ("s" 9)))
-;;; @exempleCode (onlyKeys ttt)
+;;; @exempleCode (only-values ttt)
 ;;;
-(defun onlyValues(association-list)
+(defun only-values(association-list)
   (mapcar 'cdr association-list))
 
 ;;; @description Receives an association list and returns only elements 

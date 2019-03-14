@@ -70,7 +70,7 @@
 ;;;
 ;;; @return list : List containing the intersection of the first list with the second list.
 ;;;
-;;; @exempleDescription Exemplo que filtra uma lista de números e retorna apenas os números pares.
+;;; @exempleDescription Example that returns the intersection of the first list in the second.
 ;;;
 ;;; @exempleCode (setq firstList '(1 4 6 9))
 ;;; @exempleCode (setq secondList '(1 2 3 5 7 8 9))
