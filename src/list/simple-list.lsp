@@ -112,3 +112,19 @@
 ;;;
 (defun not-every?(callback list-values)
   (not (every? callback list-values)))
+
+
+;;; @description Execute a function reducer to alements in list.
+;;;
+;;; @parameters function : callback : Function reducer to be applied to all items
+;;; @parameters list : list-values : List of values
+;;;
+;;; @return any : 
+;;;
+;;; @exempleDescription Sum all items in a list
+;;;
+;;; @exempleCode (reduce + '(1 2 3)) ; 3
+;;;
+(defun reduce(callback list-values accumulator)
+  (foreach value list-values
+    (setq accumulator (callback accumulator value))))

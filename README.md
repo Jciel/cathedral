@@ -394,6 +394,27 @@ Check if all numbers are odd.
 
 <br>
 <br>
+
+##### __list/simple-list/reduce?__  
+Execute a function reducer to alements in list.    
+
+###### Parameters  
+``function`` : ``callback`` : Function reducer to be applied to all items.  
+``list`` : ``list-values`` : List of values.  
+
+###### Return  
+``any`` :   
+
+###### Exemple  
+Sum all items in a list.  
+
+```lsp
+(reduce + '(1 2 3)) ; 3
+```
+
+
+<br>
+<br>
 <br>
 
 #### __simple-list/association-list__
