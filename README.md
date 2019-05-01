@@ -165,6 +165,91 @@ Receives a string and splits into parts with a reference delimiter.
 
 <br>
 <br>
+
+##### __string/str-is-empty__  
+The str-is-empty function return True (T) if string is empty ("") and Nil otherwise.  
+
+###### Parameters  
+``string`` : ``string`` : String to be check.  
+
+###### Return  
+``bool`` : True (T) if string is empty ("") and Nil otherwise.  
+
+###### Exemple  
+Receives a string and return True if the string is not empty ("").  
+
+```lsp
+(str-is-empty "testing")
+T
+```
+
+<br>
+<br>
+
+##### __string/str-join__  
+The str-join function gets a list of string and joins these string abd returns a string only.  
+
+###### Parameters  
+``list`` : ``list-string`` : list-string : List of string.  
+
+###### Return  
+``string`` : A string being the join of the string list.  
+
+###### Exemple  
+Receives a list of string and return a string.  
+
+```lsp
+(str-join '("a" "b" "o" "u" "t"))
+"about"
+
+(str-join '("hello " "world"))
+"hello world"
+```
+
+<br>
+<br>
+
+##### __string/str-left__  
+The str-left function take n characters from left side of a string.  
+
+###### Parameters  
+``int`` : ``n`` : Quantity of characters to take.  
+``string`` : ``string`` : String to take n characters.  
+
+###### Return  
+``string`` : A string containing n caracters.  
+
+###### Exemple  
+Receives a int n and a string, return n characters of the left side string.  
+
+```lsp
+(str-left 2 "testing")
+"te"
+```
+
+<br>
+<br>
+
+##### __string/str-right__  
+The str-right function take n characters from right side of a string.  
+
+###### Parameters  
+``int`` : ``n`` : Quantity of characters to take.  
+``string`` : ``string`` : String to take n characters.  
+
+###### Return  
+``string`` : A string containing n caracters.  
+
+###### Exemple  
+Receives a int n and a string, return n characters of the right side string.  
+
+```lsp
+(str-right 2 "testing")
+"ng"
+```
+
+<br>
+<br>
 <br>
 
 ### __list__
@@ -262,30 +347,6 @@ Example that returns the intersection of the first list in the second.
 (intersect firstList secondList)
 
 (1 9)
-```
-
-
-<br>
-<br>
-
-##### __list/simple-list/except__  
-Returns the items in a list except those defined as a parameter.  
-
-###### Parameters  
-``list`` : ``list-values`` : List with all values.  
-``list`` : ``list-values-except`` : List with values ​​to be removed.  
-
-###### Return  
-``list`` : List containing the values ​​except those defined to be removed.  
-
-###### Exemple  
-Example returns values ​​from a list except those defined as a parameter.  
-
-```lsp
-(setq lista '(1 2 3 4 5 6 7 8 9))
-(except lista '(2 5 7))
-
-(1 3 4 6 8 9)
 ```
 
 
