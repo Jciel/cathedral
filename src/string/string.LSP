@@ -20,21 +20,21 @@
 	  string (substr string (+ 2 symbol-position))
 	  list-splits (append list-splits (list first-part)))))
 
-;;; @description The str-is-empty function return True (T) if string is empty ("") and Nil otherwise.
+;;; @description The str-is-empty? function return True (T) if string is empty ("") and Nil otherwise.
 ;;;
 ;;; @parameters string : string : String to be check.
 ;;;
-;;; @return bool :  True (T) if string is empty ("") and Nil otherwise.
+;;; @return bool :  True (T) if string is empty ("") and nill otherwise.
 ;;;
 ;;; @exempleDescription Receives a string and return True if the string is not empty ("").
 ;;;
-;;; @exempleCode (str-is-empty "testing")
+;;; @exempleCode (str-is-empty? "testing")
+;;; @exempleCode nill
+;;;
+;;; @exempleCode (str-is-empty? "")
 ;;; @exempleCode T
 ;;;
-;;; @exempleCode (str-is-empty "")
-;;; @exempleCode Nil
-;;;
-(defun str-is-empty(string)
+(defun str-is-empty?(string)
   (eq string ""))
 
 ;;; @description The str-join function gets a list of string and joins these string abd returns a string only.
@@ -52,9 +52,7 @@
 ;;; @exempleCode "hello world"
 ;;;
 (defun str-join(list-string / str-aux str)
-  (setq str-aux "")
-  (foreach str list-string
-    (setq str-aux (strcat str-aux str))))
+	(apply 'strcat list-string))
 
 ;;; @description The str-left function take n characters from left side of a string.
 ;;;

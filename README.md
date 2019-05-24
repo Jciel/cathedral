@@ -146,7 +146,7 @@ Check if the parameter is odd
 ### __string__  
 
 ##### __string/str-split__  
-The strSplit function splits a string into substrings by having a character as a reference.  
+The str-split function splits a string into substrings by having a character as a reference.  
 
 ###### Parameters  
 ``string`` : ``string`` : String to be split.  
@@ -455,9 +455,9 @@ Receives an association list and returns only the keys.
 
 ```lsp
 (setq ttt '(("a" 1) ("b" 2) ("c" 5) ("d" 8) ("e" 6) ("s" 9)))
-(only-keys ttt)
+(only-values ttt)
 
-("a" "b" "c" "d" "e" "s")
+(1 2 5 8 6 9)
 ```
 
 <br>

@@ -25,7 +25,7 @@
 ;;; @exempleCode (only-values ttt)
 ;;;
 (defun only-values(association-list)
-  (mapcar 'cdr association-list))
+  (mapcar '(lambda (item) (nth 1 item)) association-list))
 
 ;;; @description Receives an association list and returns only elements 
 ;;; @description of received keys as arguments
