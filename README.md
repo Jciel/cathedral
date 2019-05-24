@@ -15,32 +15,32 @@ new functionality for data processing in AutoLISP.
 
 *******
 ## Summary
-- Core
- - [pipe](#corepipe)
- - [not=](#corenot)
- - [notnull](#corenotnull)
- - [neg?](#coreneg)
- - [even?](#coreeven)
- - [odd?](#coreodd)
-- String
- - [str-split](#stringstr-split)
- - [str-is-empty](#stringstr-is-empty)
- - [str-join](#stringstr-join)
- - [str-left](#stringstr-left)
- - [str-right](#stringstr-right)
-- List
- - Simple List
-  - [filter](#listsimple-listfilter)
-  - [chunk](#listsimple-listchunk)
-  - [except](#listsimple-listexcept)
-  - [intersect](#listsimple-listintersect)
-  - [every?](#listsimple-listevery)
-  - [not-every?](#listsimple-listnot-every)
-  - [reduce](#listsimple-listreduce)
- - Association List
-  - [only-keys](#listassociation-listonly-keys)
-  - [only-values](#listassociation-listonly-values)
-  - [where](#listassociation-listwhere)
+- **Core**
+  - [pipe](#corepipe)
+  - [not=](#corenot)
+  - [notnull](#corenotnull)
+  - [neg?](#coreneg)
+  - [even?](#coreeven)
+  - [odd?](#coreodd)
+- **String**
+  - [str-split](#stringstr-split)
+  - [str-is-empty](#stringstr-is-empty)
+  - [str-join](#stringstr-join)
+  - [str-left](#stringstr-left)
+  - [str-right](#stringstr-right)
+- **List**
+  - Simple List
+    - [filter](#listsimple-listfilter)
+    - [chunk](#listsimple-listchunk)
+    - [except](#listsimple-listexcept)
+    - [intersect](#listsimple-listintersect)
+    - [every?](#listsimple-listevery)
+    - [not-every?](#listsimple-listnot-every)
+    - [reduce](#listsimple-listreduce)
+  - Association List
+    - [only-keys](#listassociation-listonly-keys)
+    - [only-values](#listassociation-listonly-values)
+    - [where](#listassociation-listwhere)
 *******
 
 <br>
