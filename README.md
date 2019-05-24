@@ -12,6 +12,38 @@ new functionality for data processing in AutoLISP.
 ### Documentations
 
 <br>
+
+*******
+## Summary
+- Core
+ - [pipe](#corepipe)
+ - [not=](#corenot)
+ - [notnull](#corenotnull)
+ - [neg?](#coreneg)
+ - [even?](#coreeven)
+ - [odd?](#coreodd)
+- String
+ - [str-split](#stringstr-split)
+ - [str-is-empty](#stringstr-is-empty)
+ - [str-join](#stringstr-join)
+ - [str-left](#stringstr-left)
+ - [str-right](#stringstr-right)
+- List
+ - Simple List
+  - [filter](#listsimple-listfilter)
+  - [chunk](#listsimple-listchunk)
+  - [except](#listsimple-listexcept)
+  - [intersect](#listsimple-listintersect)
+  - [every?](#listsimple-listevery)
+  - [not-every?](#listsimple-listnot-every)
+  - [reduce](#listsimple-listreduce)
+ - Association List
+  - [only-keys](#listassociation-listonly-keys)
+  - [only-values](#listassociation-listonly-values)
+  - [where](#listassociation-listwhere)
+*******
+
+<br>
 <br>
 
 ### __core__
@@ -395,7 +427,7 @@ Check if all numbers are odd.
 <br>
 <br>
 
-##### __list/simple-list/reduce?__  
+##### __list/simple-list/reduce__  
 Execute a function reducer to alements in list.    
 
 ###### Parameters  
@@ -409,7 +441,7 @@ Execute a function reducer to alements in list.
 Sum all items in a list.  
 
 ```lsp
-(reduce + '(1 2 3)) ; 3
+(reduce + '(1 2 3)) ; 6
 ```
 
 

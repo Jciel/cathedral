@@ -123,7 +123,7 @@
 ;;;
 ;;; @exempleDescription Sum all items in a list
 ;;;
-;;; @exempleCode (reduce + '(1 2 3)) ; 3
+;;; @exempleCode (reduce + '(1 2 3) 0) ; 6
 ;;;
 (defun reduce(callback list-values accumulator)
   (foreach value list-values
