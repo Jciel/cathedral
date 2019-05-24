@@ -9,12 +9,10 @@ new functionality for data processing in AutoLISP.
 <br>
 <br>
 
-### Documentations
-
-<br>
+## Documentations
 
 *******
-## Summary
+### Summary
 - **Core**
   - [pipe](#corepipe)
   - [not=](#corenot)
