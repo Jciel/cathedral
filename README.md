@@ -20,6 +20,8 @@ new functionality for data processing in AutoLISP.
   - [neg?](#coreneg)
   - [even?](#coreeven)
   - [odd?](#coreodd)
+  - Date-Time
+	- [date-time](#coredatetime)
 - **String**
   - [str-split](#stringstr-split)
   - [str-is-empty](#stringstr-is-empty)
@@ -167,6 +169,40 @@ Check if the parameter is odd
 ```lsp
 (odd? 1) ; T
 (odd? 2) ; nil
+```
+
+<br>
+<br>
+
+### __Date-Time__
+
+#### __core/date-time__
+
+##### __core/date-time__  
+Return a string wit the current date and time in the format indicated.  
+The format is indicated by a parameter containing the options:  
+- __Y__ -> indicates the year
+- __m__ -> indicates the month
+- __d__ -> indicates the day
+- __H__ -> indicates the hour
+- __i__ -> indicates the minutes
+- __s__ -> indicates the seconds
+
+###### Parameters  
+``string`` : ``format`` : String indicating the format.  
+
+###### Return  
+``string`` : String containing the date-time in the format indicated.  
+
+###### Exemple  
+1 - Return the current data and time.  
+2 - Return just the current data.  
+3 - Return just the current time.  
+
+```lsp
+(date-time "Y-m-d H:i:s") ; "2019-06-12 23:57:13"
+(date-time "Y-m-d") ; "2019-06-12"
+(date-time "H:i:s") ; "23:57:13"
 ```
 
 <br>
