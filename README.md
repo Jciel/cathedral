@@ -21,7 +21,7 @@ new functionality for data processing in AutoLISP.
   - [even?](#coreeven)
   - [odd?](#coreodd)
   - Date-Time
-	- [date-time](#coredatetime)
+	- [date-time](#coredate-time-1)
 - **String**
   - [str-split](#stringstr-split)
   - [str-is-empty](#stringstr-is-empty)
