@@ -165,7 +165,7 @@
 ;;;
 ;;; @return bool : True (T) if exist value in list.
 ;;;
-;;; @exempleDescription Check if exist value 2 in list
+;;; @exempleDescription Check if exist value 2 in list.
 ;;;
 ;;; @exempleCode (contains? 2 '(5 3 8 2 9)) ; T
 ;;; @exempleCode (contains? 2 '(5 3 8 14 9)) ; nil

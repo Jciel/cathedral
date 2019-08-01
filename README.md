@@ -504,6 +504,27 @@ Check if exist one numbers odd.
 
 <br>
 <br>
+
+##### __list/simple-list/contains?__  
+Return True (T) if the list-values contains de value find.    
+
+###### Parameters  
+``any`` : find : value to look for.  
+``list`` : ``list-values`` : List of values.  
+
+###### Return  
+``bool`` : True (T) if exist value in list.  
+
+###### Exemple  
+Check if exist value 2 in list.  
+
+```lsp
+(contains? 2 '(5 3 8 2 9)) ; T
+(contains? 2 '(5 3 8 14 9)) ; nil
+```
+
+<br>
+<br>
 <br>
 
 #### __simple-list/association-list__
