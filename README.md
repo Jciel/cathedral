@@ -248,8 +248,8 @@ The str-is-empty function return True (T) if string is empty ("") and Nil otherw
 Receives a string and return True if the string is not empty ("").  
 
 ```lsp
-(str-is-empty "testing")
-T
+(str-is-empty "testing") ; nil
+(str-is-empty? "") ; T
 ```
 
 <br>
