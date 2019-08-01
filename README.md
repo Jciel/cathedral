@@ -38,6 +38,7 @@ new functionality for data processing in AutoLISP.
     - [not-every?](#listsimple-listnot-every)
     - [reduce](#listsimple-listreduce)
     - [not-any?](#listsimple-listnot-any)
+    - [contains?](#listsimple-listcontains)
   - Association List
     - [only-keys](#listassociation-listonly-keys)
     - [only-values](#listassociation-listonly-values)
