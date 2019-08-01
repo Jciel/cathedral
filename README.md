@@ -37,10 +37,13 @@ new functionality for data processing in AutoLISP.
     - [every?](#listsimple-listevery)
     - [not-every?](#listsimple-listnot-every)
     - [reduce](#listsimple-listreduce)
+    - [not-any?](#listsimple-listnot-any)
   - Association List
     - [only-keys](#listassociation-listonly-keys)
     - [only-values](#listassociation-listonly-values)
     - [where](#listassociation-listwhere)
+    - [contains-key?](#listassociation-listcontains-key)
+    - [contains-value?](#listassociation-listcontains-value)
 *******
 
 <br>
@@ -478,6 +481,26 @@ Sum all items in a list.
 (reduce + '(1 2 3)) ; 6
 ```
 
+<br>
+<br>
+
+##### __list/simple-list/not-any?__  
+Return False (nil) if Callback return True for any item in list-values.    
+
+###### Parameters  
+``function`` : ``callback`` : Function to be applied to items.  
+``list`` : ``list-values`` : List of values.  
+
+###### Return  
+``bool`` : False (nill) if Callback is True for any item.  
+
+###### Exemple  
+Check if exist one numbers odd.  
+
+```lsp
+(not-any? odd? '(1 3 5 7)) ; nil
+(not-any? odd? '(1 2 6 8)) ; T
+```
 
 <br>
 <br>
@@ -547,4 +570,46 @@ It receives a list with join sublists and returns only those that contain the ke
 ```lsp
 (setq ttt '((("a" 1) ("b" 2) ("c" 3)) (("a" 1) ("b" 8) ("c" 5)) (("a" 3) ("b" 2) ("c" 52))))
 (where "a" 1 ttt)
+```
+
+<br>
+<br>
+
+##### __list/association-list/contains-key?__  
+Return True (T) if the list association contains de key 'key'.  
+
+###### Parameters
+``any`` : ``key`` : Key to look for.  
+``list`` : ``list-values`` : List association of values.  
+
+###### Return  
+``bool`` : True (T) if exist key in list.  
+
+###### Exemple  
+Check if exist the key 2 in list.  
+
+```lsp
+(contains-key? 2 '((1 . "a") (2 . "b") (3 . "c"))) ; T
+(contains-key? 2 '((1 . "a") (5 . "b") (3 . "c"))) ; nil
+```
+
+<br>
+<br>
+
+##### __list/association-list/contains-value?__  
+Return True (T) if the list association contains the value 'find'.  
+
+###### Parameters
+``any`` : ``find`` : Value to look for.  
+``list`` : ``list-values`` : List association of values.  
+
+###### Return  
+``bool`` : True (T) if exist the value in list.  
+
+###### Exemple  
+Check if exist the value "b" in list.  
+
+```lsp
+(contains-value? "b" '((1 . "a") (2 . "b") (3 . "c"))) ; T
+(contains-value? "b" '((1 . "a") (5 . "h") (3 . "c"))) ; nil
 ```

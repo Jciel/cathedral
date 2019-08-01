@@ -74,7 +74,9 @@
 ;;; @exempleCode (even? 2) T
 ;;;
 (defun even?(el)
-  (= (rem el 2) 0))
+  (if (not el)
+	nil
+    (= (rem el 2) 0)))
 
 ;;; @description Returns True (T) if the parameter is odd
 ;;;
@@ -88,4 +90,6 @@
 ;;; @exempleCode (odd? 2) nil
 ;;;
 (defun odd?(el)
-  (not= (rem el 2) 0))
+  (if (not el)
+	nil
+	(not= (rem el 2) 0)))

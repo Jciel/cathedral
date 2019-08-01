@@ -20,6 +20,7 @@
       (setq aux (append aux (list el)))))
 	  aux)
 
+
 ;;; @description Divides a list into parts of the same size as the one received as a parameter.
 ;;;
 ;;; @parameters integer : size : Size of the resulting sublists.
@@ -45,6 +46,7 @@
       aux '()))
   aux-final)
 
+
 ;;; @description Returns the items in a list except those defined as a parameter.
 ;;;
 ;;; @parameters list : list-values : List with all values.
@@ -61,6 +63,7 @@
 (defun except(list-values list-values-except / el)
   (filter (lambda (el)
 	    (not (member el list-values-except))) list-values))
+
 
 ;;; @description Returns the intersection of the elements of the first list 
 ;;; @description with the elements of the second list.
@@ -81,6 +84,7 @@
   (intersect-base (lambda (el list-values)
 		   (member el list-values)) list-values-intersect list-values))
 
+
 ;;; @description Return True (T) if Callback return True for every items in list-values.
 ;;;
 ;;; @parameters function : callback : Function to be applied to all items.
@@ -93,10 +97,13 @@
 ;;; @exempleCode (every? odd? '(1 3 5 7)) ; T
 ;;; @exempleCode (every? odd? '(1 2 5 4)) ; nill
 ;;;
-(defun every?(callback list-values / aux)
+
+
+(defun every?(callback list-values / aux el)
   (foreach el list-values
     (setq aux (callback el)))
   aux)
+
 
 ;;; @description Return False (nil) if Callback return True for every items in list-values
 ;;;
@@ -128,3 +135,41 @@
 (defun reduce(callback list-values accumulator)
   (foreach value list-values
     (setq accumulator (callback accumulator value))))
+
+
+;;; @description Return False (nil) if Callback return True for any item in list-values
+;;;
+;;; @parameters function : callback : Function to be applied to items
+;;; @parameters list : list-values : List of values
+;;;
+;;; @return bool : False (nill) if Callback is True for any item
+;;;
+;;; @exempleDescription Check if exist one numbers odd
+;;;
+;;; @exempleCode (not-any? odd? '(1 3 5 7)) ; nil
+;;; @exempleCode (not-any? odd? '(1 2 6 8)) ; T
+;;;
+(defun not-any?(callback list-values / find n)
+	(setq n 0)
+	(while (setq find (callback (nth n list-values)))
+		(setq n (+ 1 n)))
+	(if (= n (length list-values))
+		find
+		(not find)))
+
+
+;;; @description Return True (T) if the list-values contains de value find.
+;;;
+;;; @parameters any : find : value to look for.
+;;; @parameters list : list-values : List of values.
+;;;
+;;; @return bool : True (T) if exist value in list.
+;;;
+;;; @exempleDescription Check if exist value 2 in list
+;;;
+;;; @exempleCode (contains? 2 '(5 3 8 2 9)) ; T
+;;; @exempleCode (contains? 2 '(5 3 8 14 9)) ; nil
+;;;
+(defun contains?(find list-values)
+	(not= (member find list-values) nil))
+

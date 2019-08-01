@@ -13,6 +13,7 @@
 (defun only-keys(association-list)
   (mapcar 'car association-list))
 
+
 ;;; @description Receives an association list and returns only values.
 ;;;
 ;;; @parameters list : association-list : Association list to be processed.
@@ -25,7 +26,8 @@
 ;;; @exempleCode (only-values ttt)
 ;;;
 (defun only-values(association-list)
-  (mapcar '(lambda (item) (nth 1 item)) association-list))
+  (mapcar '(lambda (item) (cdr item)) association-list))
+
 
 ;;; @description Receives an association list and returns only elements 
 ;;; @description of received keys as arguments
@@ -54,6 +56,7 @@
       (setq aux (append aux (list el)))))
   aux)
 
+
 ;;; @description Receives a list containing list of associations and returns the lists 
 ;;; @description of associations that contain the key with the value received by parameter
 ;;;
@@ -73,3 +76,35 @@
   (filter (lambda (el)
 	    (setq key-value (cadr (assoc key el)))
 	    (= value key-value)) association-list))
+
+
+;;; @description Return True (T) if the list association contains de key 'key'.
+;;;
+;;; @parameters any : key : key to look for.
+;;; @parameters list : list-values : List association of values.
+;;;
+;;; @return bool : True (T) if exist key in list.
+;;;
+;;; @exempleDescription Check if exist the key 2 in list
+;;;
+;;; @exempleCode (contains-key? 2 '((1 . "a") (2 . "b") (3 . "c"))) ; T
+;;; @exempleCode (contains-key? 2 '((1 . "a") (5 . "b") (3 . "c"))) ; nil
+;;;
+(defun contains-key?(key list-values)
+	(not= (assoc key list-values) nil))
+
+
+;;; @description Return True (T) if the list association contains the value 'find'.
+;;;
+;;; @parameters any : find : value to look for.
+;;; @parameters list : list-values : List association of values.
+;;;
+;;; @return bool : True (T) if exist the value in list.
+;;;
+;;; @exempleDescription Check if exist the value "b" in list
+;;;
+;;; @exempleCode (contains-value? "b" '((1 . "a") (2 . "b") (3 . "c"))) ; T
+;;; @exempleCode (contains-value? "b" '((1 . "a") (5 . "h") (3 . "c"))) ; nil
+;;;
+(defun contains-value?(find list-values)
+	(contains? find (only-values list-values)))
