@@ -11,12 +11,13 @@
 ;;; @exempleDescription then passes that result to the zerop function that checks whether it is a zero or not, 
 ;;; @exempleDescription thus checking whether the string is empty or not.
 ;;;
-;;; @exempleCode (pipe (list strlen zerop) "testing")
-;;; @exempleCode T
+;;; @exempleCode (pipe (list strlen zerop) "testing") ; nill
+;;; @exempleCode (pipe (list strlen zerop) "") ; T
 ;;;
 (defun pipe(callbacks-list value)
   (foreach callback callbacks-list
     (setq value (callback value))))
+
 
 ;;; @description Return True (T) if first parameter is not equal to second parameter
 ;;;
@@ -33,6 +34,7 @@
 (defun not=(elo elt)
   (not (= elo elt)))
 
+
 ;;; @description Return True (T) if the parameter is not null
 ;;;
 ;;; @parameters any : elo : Parameter to verify
@@ -46,6 +48,7 @@
 ;;;
 (defun notnull(elo)
   (not (null elo)))
+
 
 ;;; @description Returns True (T) if the parameter is negative
 ;;;
@@ -61,6 +64,7 @@
 ;;;
 (defun neg?(el)
   (< el 0))
+
 
 ;;; @description Returns True (T) if the parameter is even
 ;;;
@@ -78,6 +82,7 @@
 	nil
     (= (rem el 2) 0)))
 
+
 ;;; @description Returns True (T) if the parameter is odd
 ;;;
 ;;; @parameters int : elo : Parameter to verify
@@ -93,3 +98,46 @@
   (if (not el)
 	nil
 	(not= (rem el 2) 0)))
+
+
+;;; @description Execute body if test is True (T).
+;;;
+;;; @parameters exp : test : Logical test.
+;;; @parameters exp : body : Expression to execute.
+;;;
+;;; @return any : Return the result of execution body.
+;;;
+;;; @exempleDescription Sum if num is equal 1.
+;;;
+;;; @exempleCode (setq num 1)
+;;; @exempleCode (when (= num 1)
+;;; @exempleCode   (+ num 5)) ; 6
+;;;
+;;; @exempleCode (setq num 2)
+;;; @exempleCode (when (= num 1)
+;;; @exempleCode   (+ num 5)) ; nil
+;;;
+(defun when(test body)
+  (if test
+	body))
+
+
+;;; @description Execute body if test is False (nil).
+;;;
+;;; @parameters exp : test : Logical test.
+;;; @parameters exp : body : Expression to execute.
+;;;
+;;; @return any : Return the result of execution body.
+;;;
+;;; @exempleDescription Sum if num is different 1.
+;;;
+;;; @exempleCode (setq num 1)
+;;; @exempleCode (when-not (= num 1)
+;;; @exempleCode   (+ num 5)) ; nil
+;;;
+;;; @exempleCode (setq num 2)
+;;; @exempleCode (when-not (= num 1)
+;;; @exempleCode   (+ num 5)) ; 7
+;;;
+(defun when-not(test body)
+  (when (not test) body))

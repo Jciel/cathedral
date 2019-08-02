@@ -20,6 +20,8 @@ new functionality for data processing in AutoLISP.
   - [neg?](#coreneg)
   - [even?](#coreeven)
   - [odd?](#coreodd)
+  - [when](#corewhen)
+  - [when-not](#corewhen-not)
   - Date-Time
 	- [date-time](#coredate-time-1)
 - **String**
@@ -39,6 +41,7 @@ new functionality for data processing in AutoLISP.
     - [reduce](#listsimple-listreduce)
     - [not-any?](#listsimple-listnot-any)
     - [contains?](#listsimple-listcontains)
+    - [take](#listsimple-listtake)
   - Association List
     - [only-keys](#listassociation-listonly-keys)
     - [only-values](#listassociation-listonly-values)
@@ -68,7 +71,8 @@ The code below receives a string and first passes to the stlen function that ret
 result to the zerop function that checks whether it is a zero or not, thus checking whether the string is empty or not.  
 
 ```lsp
-(pipe (list strlen zerop) "testing") ; T
+(pipe (list strlen zerop) "testing") ; nill
+(pipe (list strlen zerop) "") ; T
 ```
 
 <br>
@@ -173,6 +177,58 @@ Check if the parameter is odd
 ```lsp
 (odd? 1) ; T
 (odd? 2) ; nil
+```
+
+<br>
+<br>
+
+##### __core/when__  
+Execute body if test is True (T).   
+
+###### Parameters  
+``exp`` : ``test`` : Logical test.  
+``exp`` : ``body`` : Expression to execute.  
+
+###### Return  
+``any`` : Return the result of execution body.  
+
+###### Exemple  
+Sum if num is equal 1.  
+
+```lsp
+(setq num 1)
+(when (= num 1)
+  (+ num 5)) ; 6
+  
+(setq num 2)
+(when (= num 1)
+  (+ num 5)) ; nil
+```
+
+<br>
+<br>
+
+##### __core/when-not__  
+Execute body if test is False (nil).   
+
+###### Parameters  
+``exp`` : ``test`` : Logical test.  
+``exp`` : ``body`` : Expression to execute.  
+
+###### Return  
+``any`` : Return the result of execution body.  
+
+###### Exemple  
+Sum if num is different 1.  
+
+```lsp
+(setq num 1)
+(when-not (= num 1)
+  (+ num 5)) ; nil
+  
+(setq num 2)
+(when-not (= num 1)
+  (+ num 5)) ; 7
 ```
 
 <br>
@@ -352,6 +408,7 @@ Example that filters a list of numbers and returns only even numbers.
 
 ##### __list/simple-list/chunk__  
 Divides a list into parts of the same size as the one received as a parameter.   
+If the size is negative, the list values are reversed.   
 
 ###### Parameters  
 ``integer`` : ``size`` : Size of the resulting sublists.  
@@ -510,7 +567,7 @@ Check if exist one numbers odd.
 Return True (T) if the list-values contains de value find.    
 
 ###### Parameters  
-``any`` : find : value to look for.  
+``any`` : ``find`` : value to look for.  
 ``list`` : ``list-values`` : List of values.  
 
 ###### Return  
@@ -523,6 +580,28 @@ Check if exist value 2 in list.
 (contains? 2 '(5 3 8 2 9)) ; T
 (contains? 2 '(5 3 8 14 9)) ; nil
 ```
+
+<br>
+<br>
+
+##### __list/simple-list/take__  
+Take the count first element from a list.  
+If the count is negative, the take element from the end of list.  
+
+###### Parameters  
+``int`` : ``count`` : value to look for.  
+``list`` : ``list-values`` : List of values.  
+
+###### Return  
+``list`` : List of the count n elements from list.  
+
+###### Exemple  
+Check if exist value 2 in list.  
+
+```lsp
+(take 2 '(5 3 8 2 9)) ; (5 3)
+```
+
 
 <br>
 <br>

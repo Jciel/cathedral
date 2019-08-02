@@ -22,6 +22,7 @@
 
 
 ;;; @description Divides a list into parts of the same size as the one received as a parameter.
+;;; @description If the size is negative, the list values are reversed.  
 ;;;
 ;;; @parameters integer : size : Size of the resulting sublists.
 ;;; @parameters list : list-values : List to be divided.
@@ -35,15 +36,18 @@
 ;;;
 (defun chunk(size list-values / aux aux-final el)
   (setq aux '()
-	aux-final '())
-  (while (not (null list-values))
+	    aux-final '())
+  (if (neg? size)
+	(setq list-values (reverse list-values)
+	      size (abs size)))
+  (while (notnull list-values)
     (repeat size
-      (setq el (car list-values)
+	  (setq el (car list-values)
 	    list-values (cdr list-values))
-      (if (not (null el))
-        (setq aux (append aux (list el)))))
+	  (if (notnull el)
+	    (setq aux (append aux (list el)))))
     (setq aux-final (append aux-final (list aux))
-      aux '()))
+		  aux '()))
   aux-final)
 
 
@@ -173,3 +177,19 @@
 (defun contains?(find list-values)
 	(not= (member find list-values) nil))
 
+
+;;; @description Take the count first element from a list.
+;;; @description If the count is negative, the take element from the end of list.
+;;;
+;;; @parameters int : count : value to look for.
+;;; @parameters list : list-values : List of values.
+;;;
+;;; @return list : True (T) if exist value in list.
+;;;
+;;; @exempleDescription Check if exist value 2 in list.
+;;;
+;;; @exempleCode (contains? 2 '(5 3 8 2 9)) ; T
+;;; @exempleCode (contains? 2 '(5 3 8 14 9)) ; nil
+;;;
+(defun take(count list-values)
+	(car (chunk count list-values)))

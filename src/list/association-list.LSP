@@ -85,7 +85,7 @@
 ;;;
 ;;; @return bool : True (T) if exist key in list.
 ;;;
-;;; @exempleDescription Check if exist the key 2 in list
+;;; @exempleDescription Check if exist the key 2 in list.
 ;;;
 ;;; @exempleCode (contains-key? 2 '((1 . "a") (2 . "b") (3 . "c"))) ; T
 ;;; @exempleCode (contains-key? 2 '((1 . "a") (5 . "b") (3 . "c"))) ; nil
@@ -101,7 +101,7 @@
 ;;;
 ;;; @return bool : True (T) if exist the value in list.
 ;;;
-;;; @exempleDescription Check if exist the value "b" in list
+;;; @exempleDescription Check if exist the value "b" in list.
 ;;;
 ;;; @exempleCode (contains-value? "b" '((1 . "a") (2 . "b") (3 . "c"))) ; T
 ;;; @exempleCode (contains-value? "b" '((1 . "a") (5 . "h") (3 . "c"))) ; nil
