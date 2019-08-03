@@ -86,7 +86,7 @@
 ;;;
 (defun intersect(list-values-intersect list-values / el)
   (intersect-base (lambda (el list-values)
-		   (member el list-values)) list-values-intersect list-values))
+                    (member el list-values)) list-values-intersect list-values))
 
 
 ;;; @description Return True (T) if Callback return True for every items in list-values.
@@ -101,13 +101,13 @@
 ;;; @exempleCode (every? odd? '(1 3 5 7)) ; T
 ;;; @exempleCode (every? odd? '(1 2 5 4)) ; nill
 ;;;
-
-
-(defun every?(callback list-values / aux el)
-  (foreach el list-values
-    (setq aux (callback el)))
-  aux)
-
+(defun every?(callback list-values)
+  (if (not (callback (car list-values)))
+    nil
+    (if (cdr list-values)
+      (every? callback (cdr list-values))
+      T)))
+	
 
 ;;; @description Return False (nil) if Callback return True for every items in list-values
 ;;;
@@ -136,7 +136,7 @@
 ;;;
 ;;; @exempleCode (reduce + '(1 2 3) 0) ; 6
 ;;;
-(defun reduce(callback list-values accumulator)
+(defun reduce(callback list-values accumulator / value)
   (foreach value list-values
     (setq accumulator (callback accumulator value))))
 
@@ -154,12 +154,11 @@
 ;;; @exempleCode (not-any? odd? '(1 2 6 8)) ; T
 ;;;
 (defun not-any?(callback list-values / find n)
-	(setq n 0)
-	(while (setq find (callback (nth n list-values)))
-		(setq n (+ 1 n)))
-	(if (= n (length list-values))
-		find
-		(not find)))
+  (if (callback (car list-values))
+    nil
+    (if (cdr list-values)
+      (not-any? callback (cdr list-values))
+      T)))
 
 
 ;;; @description Return True (T) if the list-values contains de value find.
@@ -184,12 +183,11 @@
 ;;; @parameters int : count : value to look for.
 ;;; @parameters list : list-values : List of values.
 ;;;
-;;; @return list : True (T) if exist value in list.
+;;; @return list : List of the count n elements from list.
 ;;;
 ;;; @exempleDescription Check if exist value 2 in list.
 ;;;
-;;; @exempleCode (contains? 2 '(5 3 8 2 9)) ; T
-;;; @exempleCode (contains? 2 '(5 3 8 14 9)) ; nil
+;;; @exempleCode (take 2 '(5 3 8 2 9)) ; (5 3)
 ;;;
 (defun take(count list-values)
 	(car (chunk count list-values)))
