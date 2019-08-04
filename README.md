@@ -75,11 +75,11 @@ result to the zerop function that checks whether it is a zero or not, thus check
 ```lsp
 (|>> (list 
        strlen
-	   zerop) "testing") ; nill
+       zerop) "testing") ; nill
 	   
 (|>> (list
        strlen
-	   zerop) "") ; T
+       zerop) "") ; T
 ```  
 The same of:  
 ```lsp
@@ -129,8 +129,8 @@ result to the zerop function that checks whether it is a zero or not, thus check
 	   zerop) "testing") ; nill
 	   
 (|> (list
-       strlen
-	   zerop) "") ; T
+      strlen
+      zerop) "") ; T
 ```  
 The same of:  
 ```lsp
