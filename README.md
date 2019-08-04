@@ -125,8 +125,8 @@ result to the zerop function that checks whether it is a zero or not, thus check
 
 ```lsp
 (|> (list 
-       strlen
-	   zerop) "testing") ; nill
+      strlen
+      zerop) "testing") ; nill
 	   
 (|> (list
       strlen
