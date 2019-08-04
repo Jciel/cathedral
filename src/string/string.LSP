@@ -20,6 +20,7 @@
 	  string (substr string (+ 2 symbol-position))
 	  list-splits (append list-splits (list first-part)))))
 
+
 ;;; @description The str-is-empty? function return True (T) if string is empty ("") and Nil otherwise.
 ;;;
 ;;; @parameters string : string : String to be check.
@@ -37,6 +38,7 @@
 (defun str-is-empty?(string)
   (eq string ""))
 
+
 ;;; @description The str-join function gets a list of string and joins these string abd returns a string only.
 ;;;
 ;;; @parameters string : list-string : List of string.
@@ -51,8 +53,9 @@
 ;;; @exempleCode (str-join '("hello " "world"))
 ;;; @exempleCode "hello world"
 ;;;
-(defun str-join(list-string / str-aux str)
+(defun str-join(list-string)
 	(apply 'strcat list-string))
+
 
 ;;; @description The str-left function take n characters from left side of a string.
 ;;;
@@ -68,6 +71,7 @@
 ;;;
 (defun str-left(n string)
   (substr string 1 n))
+
 
 ;;; @description The str-right function take n characters from right side of a string.
 ;;;

@@ -14,7 +14,8 @@ new functionality for data processing in AutoLISP.
 *******
 ### Summary
 - **Core**
-  - [pipe](#corepipe)
+  - [|>>](#core|>>)
+  - [|>](#core|>)
   - [not=](#corenot)
   - [notnull](#corenotnull)
   - [neg?](#coreneg)
@@ -55,9 +56,10 @@ new functionality for data processing in AutoLISP.
 
 ### __core__
 
-##### __core/pipe__  
+##### __core/|>>__  
 
-Creates a function pipe by passing the result of a function as a parameter to the next function.
+Creates a function pipe by passing the result of a function as a last parameter to the next function.  
+If the functions receives multiple parameters, thar should be passed as a list.  
 
 ###### Parameters  
 ``list`` : ``callbackList`` : List of callback functions will be executed in the order they appear in the list.
@@ -71,9 +73,88 @@ The code below receives a string and first passes to the stlen function that ret
 result to the zerop function that checks whether it is a zero or not, thus checking whether the string is empty or not.  
 
 ```lsp
-(pipe (list strlen zerop) "testing") ; nill
-(pipe (list strlen zerop) "") ; T
+(|>> (list 
+       strlen
+	   zerop) "testing") ; nill
+	   
+(|>> (list
+       strlen
+	   zerop) "") ; T
+```  
+The same of:  
+```lsp
+(zerop (strlen ""))
+```  
+
+If the functions receives multiples params.  
+The example takes the list size, adds 5 and multiplies 2 by the result .   
+```lsp
+(setq lstElements '("a" "b" "c" "d"))
+
+(|>> (list
+	   length
+	   '(+ 5)
+	   '(* 2)) lstElements) ; 18
+```   
+The same of:
+```lsp
+(setq lstElements '("a" "b" "c" "d"))
+
+(* 2 (+ 5 (length lstElements)))
 ```
+
+<br>
+<br>
+
+### __core__
+
+##### __core/|>__  
+
+Creates a function pipe by passing the result of a function as a first parameter to the next function.  
+If the functions receives multiple parameters, thar should be passed as a list.  
+
+###### Parameters  
+``list`` : ``callbackList`` : List of callback functions will be executed in the order they appear in the list.
+``any`` : ``value`` : Value to be processed.
+
+###### Return  
+``any`` : Result after the application of the functions on the value.
+
+###### Exemple  
+The code below receives a string and first passes to the stlen function that returns the string size, then passes that  
+result to the zerop function that checks whether it is a zero or not, thus checking whether the string is empty or not.  
+
+```lsp
+(|> (list 
+       strlen
+	   zerop) "testing") ; nill
+	   
+(|> (list
+       strlen
+	   zerop) "") ; T
+```  
+The same of:  
+```lsp
+(zerop (strlen ""))
+```  
+
+If the functions receives multiples params.  
+The example takes the list size, adds 5 and 4, and multiplies the result by 2.   
+```lsp
+(setq lstElements '("a" "b" "c" "d"))
+
+(|> (list
+	  length
+	  '(+ 5 4)
+	  '(* 2)) lstElements) ; 26
+```   
+The same of:
+```lsp
+(setq lstElements '("a" "b" "c" "d"))
+
+(* (+ (length lstElements) 5 4) 2)
+```
+
 
 <br>
 <br>

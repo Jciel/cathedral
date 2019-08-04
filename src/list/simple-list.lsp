@@ -39,7 +39,7 @@
 	    aux-final '())
   (if (neg? size)
 	(setq list-values (reverse list-values)
-	      size (abs size)))
+	  size (abs size)))
   (while (notnull list-values)
     (repeat size
 	  (setq el (car list-values)
