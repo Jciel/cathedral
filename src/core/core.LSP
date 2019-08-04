@@ -1,6 +1,8 @@
 
 ;;; @description Creates a function pipe by passing the result of a 
-;;; @description function as a parameter to the next function.
+;;; @description function as a last or single parameter to the next function.
+;;; @description If the functions receives multiple parameters, thar should be
+;;; @description passed as a list.
 ;;;
 ;;; @parameters list : callbackList : List of callback functions will be executed in the order they appear in the list.
 ;;; @parameters any : value : Value to be processed.
@@ -11,12 +13,40 @@
 ;;; @exempleDescription then passes that result to the zerop function that checks whether it is a zero or not, 
 ;;; @exempleDescription thus checking whether the string is empty or not.
 ;;;
-;;; @exempleCode (pipe (list strlen zerop) "testing") ; nill
-;;; @exempleCode (pipe (list strlen zerop) "") ; T
+;;; @exempleCode (|>> (list strlen zerop) "testing") ; nill
+;;; @exempleCode (|>> (list strlen zerop) "") ; T
 ;;;
-(defun pipe(callbacks-list value)
+(defun |>>(callbacks-list value)
   (foreach callback callbacks-list
-    (setq value (callback value))))
+    (cond
+      ((= (type callback) 'LIST)
+       (setq value (apply (car callback) (append (cdr callback) (list value)))))
+      (T (setq value (callback value))))))
+
+
+;;; @description Creates a function pipe by passing the result of a 
+;;; @description function as a first or single parameter to the next function.
+;;; @description If the functions receives multiple parameters, thar should be
+;;; @description passed as a list.
+;;;
+;;; @parameters list : callbackList : List of callback functions will be executed in the order they appear in the list.
+;;; @parameters any : value : Value to be processed.
+;;;
+;;; @return any : Result after the application of the functions on the value.
+;;;
+;;; @exempleDescription The code below receives a string and first passes to the stlen function that returns the string size,
+;;; @exempleDescription then passes that result to the zerop function that checks whether it is a zero or not, 
+;;; @exempleDescription thus checking whether the string is empty or not.
+;;;
+;;; @exempleCode (|> (list strlen zerop) "testing") ; nill
+;;; @exempleCode (|> (list strlen zerop) "") ; T
+;;;
+(defun |>(callbacks-list value)
+  (foreach callback callbacks-list
+    (cond
+      ((= (type callback) 'LIST)
+       (setq value (apply (car callback) (cons value (cdr callback)))))
+      (T (setq value (callback value))))))
 
 
 ;;; @description Return True (T) if first parameter is not equal to second parameter
