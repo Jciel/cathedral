@@ -14,8 +14,8 @@ new functionality for data processing in AutoLISP.
 *******
 ### Summary
 - **Core**
-  - [|>>](#core|>>)
-  - [|>](#core|>)
+  - [|>>](#core-1)
+  - [|>](#core-2)
   - [not=](#corenot)
   - [notnull](#corenotnull)
   - [neg?](#coreneg)
@@ -106,7 +106,6 @@ The same of:
 <br>
 <br>
 
-### __core__
 
 ##### __core/|>__  
 
