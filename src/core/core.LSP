@@ -29,7 +29,7 @@
 ;;; @description If the functions receives multiple parameters, thar should be
 ;;; @description passed as a list.
 ;;;
-;;; @parameters list : callbackList : List of callback functions will be executed in the order they appear in the list.
+;;; @parameters list : callback-list : List of callback functions will be executed in the order they appear in the list.
 ;;; @parameters any : value : Value to be processed.
 ;;;
 ;;; @return any : Result after the application of the functions on the value.

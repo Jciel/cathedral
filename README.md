@@ -23,6 +23,7 @@ new functionality for data processing in AutoLISP.
   - [odd?](#coreodd)
   - [when](#corewhen)
   - [when-not](#corewhen-not)
+  - [type-entity](#coretype-entity)
   - Date-Time
 	- [date-time](#coredate-time-1)
 - **String**
@@ -49,6 +50,13 @@ new functionality for data processing in AutoLISP.
     - [where](#listassociation-listwhere)
     - [contains-key?](#listassociation-listcontains-key)
     - [contains-value?](#listassociation-listcontains-value)
+- **Block**
+  - [block-attr-values](#blockblock-attr-values)
+  - [b-attr-description](#blockb-attr-description)
+  - [b-attr-value](#blockb-attr-value)
+  - [block-attr](#blockblock-attr)
+  - [block-values](#blockblock-values)
+  - [block-value-by-attr](#blockblock-value-by-attr)
 *******
 
 <br>
@@ -310,6 +318,28 @@ Sum if num is different 1.
 (when-not (= num 1)
   (+ num 5)) ; 7
 ```
+
+<br>
+<br>
+
+##### __core/type-entity__   
+Returns the type of entity.  
+
+###### Parameters  
+``Entity Name`` : ``entity-name`` : Entity name to get type.   
+
+###### Return  
+``string`` : Type of the entity.  
+
+###### Exemple  
+The code below receives a Entity name and return the type.  
+
+```lsp
+(setq entity-name <Entity name: 7ffffb0c8c0>) ; from (car (entsel)) for exemple
+
+(type-entity entity-name) ; "INSERT"
+```
+
 
 <br>
 <br>
@@ -794,3 +824,118 @@ Check if exist the value "b" in list.
 (contains-value? "b" '((1 . "a") (2 . "b") (3 . "c"))) ; T
 (contains-value? "b" '((1 . "a") (5 . "h") (3 . "c"))) ; nil
 ```
+
+<br>
+<br>
+<br>
+
+### __block__  
+
+##### __block/block-attr-values__  
+Returns association list with the description and attribute value of a Block.  
+
+###### Parameters  
+``Entity Name`` : ``entity-name`` : Entity name of the block for extract the attributes.  
+
+###### Return  
+``list`` : List association with description and values of the attributes.  
+
+###### Exemple  
+The code below receives a Entity name from a Block and return a list of attributes.  
+
+```lsp
+(setq entity-name <Entity name: 7ffffb0c8c0>) ; from (car (entsel)) for exemple
+
+(block-attr-values entity-name) ; (("SNAME" . "name block") ("ZSIZE" . "56") ("LFXYZ" . "0,0,0") ("BEAMDI" . "0.0") ("CONEDE" . "34") ("CONEAN" . "10.0") ("BIASMAX" . "-1"))
+```
+
+<br>
+<br>
+
+##### __block/b-attr-description__  
+Returns the description from a attribute entity.   
+
+###### Parameters  
+``list`` : ``data-attrib-entity`` : List of data from a entity name get with (entget) for exemple.  
+
+###### Return  
+``string`` : Description of the attribute entity.  
+
+
+<br>
+<br>
+
+##### __block/b-attr-value__  
+Returns the value from a attribute entity.  
+
+###### Parameters  
+``Entity Name`` : ``entity-name`` : List of data from a entity name get with (entget) for exemple.  
+
+###### Return  
+``string`` : Value of the attribute entity.  
+
+<br>
+<br>
+
+##### __block/block-attr__  
+Returns only the description of the attributes of a block.   
+
+###### Parameters  
+``Entity Name`` : ``entity-name`` : Entity name of the block.  
+
+###### Return  
+``list`` : List containing description of attributes.  
+
+###### Exemple  
+The code below receives a Entity name and return a list of description attributes.  
+
+```lsp
+(setq entity-name <Entity name: 7ffffb0c8c0>) ; from (car (entsel)) for exemple
+
+(block-attr entity-name) ; ("SNAME" "ZSIZE" "LFXYZ" "BEAMDI" "CONEDE" "CONEAN" "BIASMAX" "BIASMIN" "COLOR" "INTENSITY" "GNAME" "LAZ" "LAY" "LAX")
+```
+
+<br>
+<br>
+
+##### __block/block-values__  
+Returns only the values of the attributes of a block.  
+
+###### Parameters  
+``Entity Name`` : ``entity-name`` : Entity name of the block.  
+
+###### Return  
+``list`` : List containing values of attributes.  
+
+###### Exemple  
+The code below receives a Entity name and return a list of values attributes.  
+
+```lsp
+(setq entity-name <Entity name: 7ffffb0c8c0>) ; from (car (entsel)) for exemple
+
+(block-values entity-name) ; ("name block" "56" "0,0,0" "0.0" "34" "10.0" "-1" "-1" "1,1,1" "1" "" "" "" "")
+```
+
+<br>
+<br>
+
+##### __block/block-value-by-attr__  
+Returns the value corresponding to the attribute passed by parameter.  
+
+###### Parameters  
+``Entity Name`` : ``entity-name`` : Entity name of the block.  
+
+###### Return  
+``any`` : Value of the attribute.  
+
+###### Exemple  
+The code below receives a Entity name and a attribute and returne the value of attribute.   
+
+```lsp
+(setq entity-name <Entity name: 7ffffb0c8c0>) ; from (car (entsel)) for exemple
+
+(block-value-by-attr entity-name "SNAME") ; "name block"
+```
+
+
+
