@@ -10,7 +10,7 @@
 ;;; @exempleCode (setq entity-name <Entity name: 7ffffb0c8c0>) ; from (car (entsel)) for exemple
 ;;; @exempleCode (block-attr-values entity-name) ; (("SNAME" . "name block") ("ZSIZE" . "56") ("LFXYZ" . "0,0,0") ("BEAMDI" . "0.0") ("CONEDE" . "34") ("CONEAN" . "10.0") ("BIASMAX" . "-1"))
 ;;;
-(defun block-attr-values (block-entity-name)
+(defun block-attr-values(block-entity-name)
   (attr-values (entnext block-entity-name) '()))
 
 
@@ -40,24 +40,9 @@
 ;;;
 (defun b-attr-value(data-attrib-entity)
   (cdr (assoc 1 data-attrib-entity)))
+  
 
-
-;;; @description Returns the type of entity.
-;;;
-;;; @parameters Entity Name : entity-name : Entity name to get type.
-;;;
-;;; @return string : Type of the entity.
-;;;
-;;; @exempleDescription The code below receives a Entity name and return the type.
-;;;
-;;; @exempleCode (setq entity-name <Entity name: 7ffffb0c8c0>) ; from (car (entsel)) for exemple
-;;; @exempleCode (type-entity entity-name) ; "INSERT"
-;;;
-(defun type-entity(entity-name)
-  (cdr (assoc 0 (entget entity-name))))
-
-
-;;; @description Returns only the description of the attributes of a block..
+;;; @description Returns only the description of the attributes of a block.
 ;;;
 ;;; @parameters Entity Name : entity-name : Entity name of the block.
 ;;;
