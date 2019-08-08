@@ -171,3 +171,18 @@
 ;;;
 (defun when-not(test body)
   (when (not test) body))
+
+
+;;; @description Returns the type of entity.
+;;;
+;;; @parameters Entity Name : entity-name : Entity name to get type.
+;;;
+;;; @return string : Type of the entity.
+;;;
+;;; @exempleDescription The code below receives a Entity name and return the type.
+;;;
+;;; @exempleCode (setq entity-name <Entity name: 7ffffb0c8c0>) ; from (car (entsel)) for exemple
+;;; @exempleCode (type-entity entity-name) ; "INSERT"
+;;;
+(defun type-entity(entity-name)
+  (cdr (assoc 0 (entget entity-name))))
