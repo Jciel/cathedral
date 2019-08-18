@@ -937,5 +937,122 @@ The code below receives a Entity name and a attribute and returne the value of a
 (block-value-by-attr entity-name "SNAME") ; "name block"
 ```
 
+<br>
+<br>
 
+### __files__
 
+##### __files/excell-files__  
+
+##### __files/excell-files/write-sheet-default__  
+This function is used to prepare a "writer" so that we can write by default specific spreadsheet 1.  
+The "writer" function takes as a parameter the row and column of the cell to be written and the   
+content to be written.   
+For close file execute the "writer" function passing row or column = 0.   
+
+###### Parameters  
+``string`` : ``file-path`` : Excell file path.   
+
+###### Return  
+``function`` : Function used to write to a file.   
+
+###### Exemple  
+Write to a file in C:.   
+
+```lsp
+(setq write-sheet (write-sheet-default "C:\\test.xlsx"))
+(write-sheet 1 1 "spreadsheet 1 by default, line 1 column 1")
+(write-sheet 1 2 "spreadsheet 1 by default, line 1 column 2")
+
+; For save and close file.
+(write-sheet 0 0 "")
+```
+
+<br>
+<br>
+
+##### __files/excell-files/write-sheet__    
+This function is used to prepare a "writer" so that we can write to a specific spreadsheet   
+an xlsx file for example, so we can just pass the cell coordinate and the content we want   
+to write to the file.   
+This function is used to prepare a "writer" so that we can write by default specific spreadsheet 1.  
+The "writer" function takes as a parameter the row and column of the cell to be written and the   
+content to be written.   
+This function allows the user to specify which worksheet to write and can use multiple  
+worksheets from the same file simultaneously.   
+For close file execute execute any "writer" function passing row or column = 0.   
+
+###### Parameters  
+``list`` : ``sheet`` : List obtained with the def-sheet function.   
+
+###### Return  
+``function`` : Function used to write to a file.   
+
+###### Exemple  
+Write to a file in C: using spreadsheet 1 and spreadsheet 2 simultaneously.    
+for this you must use the functions ``def-sheets`` and ``def-sheet``.   
+
+```lsp
+(setq sheets (def-sheets "C:\\test.xlsx"))
+
+(setq sheet1 (def-sheet sheets 1)) ; Ger for especific spreadsheet 1
+(setq sheet2 (def-sheet sheets 2)) ; Ger for especific spreadsheet 2
+
+(setq write-sheet-1 (write-sheet sheet1)) ; Writer to especific spreadsheet 1
+(setq write-sheet-2 (write-sheet sheet2)) ; Writer to especific spreadsheet 2
+
+(write-sheet-1 1 1 "spreadsheet 1, line 1 column 1") ; Writing "spreadsheet 1, line 1 column 1" in cell of line 1 and coluns 1 of spreadsheet 1
+(write-sheet-1 2 1 "spreadsheet 1, line 2 column 1") ; Writing "spreadsheet 1, line 2 column 1" in cell of line 2 and coluns 1 of spreadsheet 1
+
+(write-sheet-2 1 1 "spreadsheet 2, line 1 column 1") ; Writing "spreadsheet 2, line 1 column 1" in cell of line 1 and coluns 1 of spreadsheet 2
+(write-sheet-2 1 2 "spreadsheet 2, line 1 column 2") ; Writing "spreadsheet 2, line 1 column 2" in cell of line 1 and coluns 2 of spreadsheet 2
+
+; For save and close file.
+(write-sheet-1 0 0 "")
+```
+
+<br>
+<br>
+
+##### __files/excell-files/def-sheets__    
+def-sheets return a list containing a VLA-OBJECT Sheets and a VLA-OBJECT _Workbook  
+for use with ``def-sheet`` function.  
+
+###### Parameters  
+``string`` : ``file-path`` : Excell file path.  
+
+###### Return  
+``list`` : List containing a VLA-OBJECT Sheets and a VLA-OBJECT _Workbook.   
+
+###### Exemple  
+Return VLA-OBJECT Sheets and a VLA-OBJECT _Workbook from a file.   
+
+```lsp
+(setq sheets (def-sheets "C:\\test.xlsx")) ; (#<VLA-OBJECT Sheets 00000000033f7278> #<VLA-OBJECT _Workbook 0000000026d1f258>)
+```
+
+<br>
+<br>
+
+##### __files/excell-files/def-sheet__    
+def-sheets return a list containing a VLA-OBJECT Sheets and a VLA-OBJECT _Workbook   
+for use with ``def-sheet`` function.   
+
+###### Parameters  
+``list`` : ``sheets`` : List obtained with the ``def-sheets`` function.   
+``worksheet`` : ``file-path`` : Excell file path.  
+
+###### Return  
+``list`` : List containing a specific VLA-OBJECT _Worksheet and a VLA-OBJECT _Workbook.     
+
+###### Exemple  
+Return specific VLA-OBJECT _Worksheet and a VLA-OBJECT _Workbook from    
+list obtained with the def-sheets function.   
+
+```lsp
+(setq sheets (def-sheets "C:\\test.xlsx")) ; (#<VLA-OBJECT Sheets 00000000033f7278> #<VLA-OBJECT _Workbook 0000000026d1f258>)
+
+; Get específica spreadsheet 1 and 2
+(setq sheet1 (def-sheet sheets 1)) ; (#<VLA-OBJECT _Worksheet 0000000032928678> #<VLA-OBJECT _Workbook 0000000026d1f258>)
+(setq sheet2 (def-sheet sheets 2)) ; (#<VLA-OBJECT _Worksheet 000000003267e238> #<VLA-OBJECT _Workbook 0000000026d1f258>)
+```
