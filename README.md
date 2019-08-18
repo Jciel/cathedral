@@ -57,6 +57,12 @@ new functionality for data processing in AutoLISP.
   - [block-attr](#blockblock-attr)
   - [block-values](#blockblock-values)
   - [block-value-by-attr](#blockblock-value-by-attr)
+- **Files**
+  - Excell files
+    - [write-sheet-default](#filesexcell-fileswrite-sheet-default)
+    - [write-sheet](#filesexcell-fileswrite-sheet)
+    - [def-sheets](#filesexcell-filesdef-sheets)
+    - [def-sheet](#filesexcell-filesdef-sheet)
 *******
 
 <br>
@@ -960,12 +966,12 @@ For close file execute the "writer" function passing row or column = 0.
 Write to a file in C:.   
 
 ```lsp
-(setq write-sheet (write-sheet-default "C:\\test.xlsx"))
-(write-sheet 1 1 "spreadsheet 1 by default, line 1 column 1")
-(write-sheet 1 2 "spreadsheet 1 by default, line 1 column 2")
+(setq writer-sheet (write-sheet-default "C:\\test.xlsx"))
+(write-sheetr 1 1 "spreadsheet 1 by default, line 1 column 1")
+(write-sheetr 1 2 "spreadsheet 1 by default, line 1 column 2")
 
 ; For save and close file.
-(write-sheet 0 0 "")
+(writer-sheet 0 0 "")
 ```
 
 <br>
@@ -975,7 +981,6 @@ Write to a file in C:.
 This function is used to prepare a "writer" so that we can write to a specific spreadsheet   
 an xlsx file for example, so we can just pass the cell coordinate and the content we want   
 to write to the file.   
-This function is used to prepare a "writer" so that we can write by default specific spreadsheet 1.  
 The "writer" function takes as a parameter the row and column of the cell to be written and the   
 content to be written.   
 This function allows the user to specify which worksheet to write and can use multiple  
@@ -995,20 +1000,20 @@ for this you must use the functions ``def-sheets`` and ``def-sheet``.
 ```lsp
 (setq sheets (def-sheets "C:\\test.xlsx"))
 
-(setq sheet1 (def-sheet sheets 1)) ; Ger for especific spreadsheet 1
-(setq sheet2 (def-sheet sheets 2)) ; Ger for especific spreadsheet 2
+(setq sheet1 (def-sheet sheets 1)) ; Get for especific spreadsheet 1
+(setq sheet2 (def-sheet sheets 2)) ; Get for especific spreadsheet 2
 
-(setq write-sheet-1 (write-sheet sheet1)) ; Writer to especific spreadsheet 1
-(setq write-sheet-2 (write-sheet sheet2)) ; Writer to especific spreadsheet 2
+(setq writer-sheet-1 (write-sheet sheet1)) ; Writer to especific spreadsheet 1
+(setq writer-sheet-2 (write-sheet sheet2)) ; Writer to especific spreadsheet 2
 
-(write-sheet-1 1 1 "spreadsheet 1, line 1 column 1") ; Writing "spreadsheet 1, line 1 column 1" in cell of line 1 and coluns 1 of spreadsheet 1
-(write-sheet-1 2 1 "spreadsheet 1, line 2 column 1") ; Writing "spreadsheet 1, line 2 column 1" in cell of line 2 and coluns 1 of spreadsheet 1
+(writer-sheet-1 1 1 "spreadsheet 1, line 1 column 1") ; Writing "spreadsheet 1, line 1 column 1" in cell of line 1 and coluns 1 of spreadsheet 1
+(writer-sheet-1 2 1 "spreadsheet 1, line 2 column 1") ; Writing "spreadsheet 1, line 2 column 1" in cell of line 2 and coluns 1 of spreadsheet 1
 
-(write-sheet-2 1 1 "spreadsheet 2, line 1 column 1") ; Writing "spreadsheet 2, line 1 column 1" in cell of line 1 and coluns 1 of spreadsheet 2
-(write-sheet-2 1 2 "spreadsheet 2, line 1 column 2") ; Writing "spreadsheet 2, line 1 column 2" in cell of line 1 and coluns 2 of spreadsheet 2
+(writer-sheet-2 1 1 "spreadsheet 2, line 1 column 1") ; Writing "spreadsheet 2, line 1 column 1" in cell of line 1 and coluns 1 of spreadsheet 2
+(writer-sheet-2 1 2 "spreadsheet 2, line 1 column 2") ; Writing "spreadsheet 2, line 1 column 2" in cell of line 1 and coluns 2 of spreadsheet 2
 
 ; For save and close file.
-(write-sheet-1 0 0 "")
+(writer-sheet-1 0 0 "")
 ```
 
 <br>
