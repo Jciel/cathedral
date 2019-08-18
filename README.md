@@ -1057,7 +1057,7 @@ list obtained with the def-sheets function.
 ```lsp
 (setq sheets (def-sheets "C:\\test.xlsx")) ; (#<VLA-OBJECT Sheets 00000000033f7278> #<VLA-OBJECT _Workbook 0000000026d1f258>)
 
-; Get específica spreadsheet 1 and 2
+; Get específic spreadsheet 1 and 2
 (setq sheet1 (def-sheet sheets 1)) ; (#<VLA-OBJECT _Worksheet 0000000032928678> #<VLA-OBJECT _Workbook 0000000026d1f258>)
 (setq sheet2 (def-sheet sheets 2)) ; (#<VLA-OBJECT _Worksheet 000000003267e238> #<VLA-OBJECT _Workbook 0000000026d1f258>)
 ```
