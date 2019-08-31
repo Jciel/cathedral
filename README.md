@@ -893,7 +893,7 @@ Returns only the description of the attributes of a block.
 ``list`` : List containing description of attributes.  
 
 ###### Exemple  
-The code below receives a Entity name and return a list of description attributes.  
+The code below receives a Entity name and return a list of description attributes.   
 
 ```lsp
 (setq entity-name <Entity name: 7ffffb0c8c0>) ; from (car (entsel)) for exemple

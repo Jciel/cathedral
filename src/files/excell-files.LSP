@@ -63,7 +63,7 @@
 (defun write-sheet(sheet / sheet-cells)
   (setq sheet-cells (vlax-get (car sheet) "cells"))
   (eval (append '(lambda (row col content))
-	  (list (list 'if '(or (zerop row) (zerop column))
+	  (list (list 'if '(or (zerop row) (zerop col))
 	    (list 'progn
 	      (list vlax-invoke-method (cadr sheet) "save")
 	      (list vlax-invoke-method (cadr sheet) "close"))
@@ -84,3 +84,62 @@
 ;;;
 (defun write-sheet-default(file-path)
   (write-sheet (def-sheet (def-sheets file-path) 1)))
+
+
+;;; @description This function is used to prepare a "reader" so that we can read a specific spreadsheet of 
+;;; @description an xlsx file for example, so we can just pass the cell coordinate and we want read the file.
+;;;
+;;; @parameters list : sheet : List obtained with the def-sheet function.
+;;;
+;;; @return function : Function used to read to a file.
+;;;
+;;; @exempleDescription	Read to a file in C:.
+;;;
+;;; @exempleCode (setq sheets (def-sheets "C:\\test.xlsx"))
+;;; @exempleCode (setq sheet1 (def-sheet sheets 1)) ; Ger for especific spreadsheet 1
+;;; @exempleCode (setq sheet2 (def-sheet sheets 2)) ; Ger for especific spreadsheet 2
+;;;
+;;; @exempleCode (setq reader-sheet-1 (read-sheet sheet1)) ; Read to especific spreadsheet 1
+;;; @exempleCode (setq reader-sheet-2 (read-sheet sheet2)) ; Read to especific spreadsheet 2
+;;;;
+;;; @exempleCode (reader-sheet-1 1 1) ; "spreadsheet 1 lina 1 column 1"
+;;; @exempleCode (reader-sheet-1 2 1) ; "spreadsheet 1 lina 2 column 1"
+;;;
+;;; @exempleCode (reader-sheet-2 1 1) ; "spreadsheet 2 lina 1 column 1"
+;;; @exempleCode (reader-sheet-2 1 2) ; "spreadsheet 2 lina 1 column 2"
+;;;
+(defun read-sheet(sheet / sheet-cells)
+  (setq sheet-cells (vlax-get (car sheet) "cells"))
+  (eval (append '(lambda (row col / value))
+	  (list (list 'if '(or (zerop row) (zerop col))
+	    (list vlax-invoke-method (cadr sheet) "close"))
+	    (list read-value sheet-cells 'row 'col)))))
+
+
+;;; @description This function is used to prepare a "reader" so that we can read by default specific spreadsheet 1
+;;;
+;;; @parameters string : file-path : Excell file path.
+;;;
+;;; @return function : Function used to read to a file.
+;;;
+;;; @exempleDescription	Read to a file in C:.
+;;;
+;;; @exempleCode (setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+;;; @exempleCode (reader-sheet 1 1) ; "spreadsheet 1 by default, line 1 column 1"
+;;; @exempleCode (reader-sheet 1 2) ; "spreadsheet 1 by default, line 1 column 2"
+;;;
+(defun read-sheet-default(file-path)
+  (read-sheet (def-sheet (def-sheets file-path) 1)))
+
+(defun read-value(sheet-cells row col / read-variant-value value)
+  (setq read-variant-value (vlax-get-property sheet-cells "item" row col)
+	value (vlax-variant-value (vlax-variant-change-type read-variant-value vlax-vbstring)))
+  value)
+
+
+
+
+
+
+
+
