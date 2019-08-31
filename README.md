@@ -1061,3 +1061,69 @@ list obtained with the def-sheets function.
 (setq sheet1 (def-sheet sheets 1)) ; (#<VLA-OBJECT _Worksheet 0000000032928678> #<VLA-OBJECT _Workbook 0000000026d1f258>)
 (setq sheet2 (def-sheet sheets 2)) ; (#<VLA-OBJECT _Worksheet 000000003267e238> #<VLA-OBJECT _Workbook 0000000026d1f258>)
 ```
+
+<br>
+<br>
+
+##### __files/excell-files/read-sheet-default__  
+This function is used to prepare a "reader" so that we can read by default specific spreadsheet 1.  
+The "reader" function takes as a parameter the row and column of the cell to be read.   
+For close file execute the "reader" function passing row or column = 0.   
+
+###### Parameters  
+``string`` : ``file-path`` : Excell file path.   
+
+###### Return  
+``function`` : Function used to read to a file.   
+
+###### Exemple  
+Read to a file in C:.   
+
+```lsp
+(setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+(reader-sheet 1 1) ; "spreadsheet 1 by default, line 1 column 1"
+(reader-sheet 1 2) ; "spreadsheet 1 by default, line 1 column 2"
+
+; For close file.
+(reader-sheet 0 0)
+```
+
+<br>
+<br>
+
+##### __files/excell-files/read-sheet__    
+This function is used to prepare a "reader" so that we can read a specific spreadsheet of    
+an xlsx file for example, so we can just pass the cell coordinate and we want read the file.    
+The "reader" function takes as a parameter the row and column of the cell to be read.   
+This function allows the user to specify which worksheet to write and can use multiple   
+worksheets from the same file simultaneously.   
+For close file execute execute any "reader" function passing row or column = 0.   
+
+###### Parameters  
+``list`` : ``sheet`` : List obtained with the def-sheet function.   
+
+###### Return  
+``function`` : Function used to read to a file.   
+
+###### Exemple  
+Read to a file in C: using spreadsheet 1 and spreadsheet 2 simultaneously.    
+for this you must use the functions ``def-sheets`` and ``def-sheet``.   
+
+```lsp
+(setq sheets (def-sheets "C:\\test.xlsx"))
+
+(setq sheet1 (def-sheet sheets 1)) ; Ger for especific spreadsheet 1
+(setq sheet2 (def-sheet sheets 2)) ; Ger for especific spreadsheet 2
+
+(setq reader-sheet-1 (read-sheet sheet1)) ; Read to especific spreadsheet 1
+(setq reader-sheet-2 (read-sheet sheet2)) ; Read to especific spreadsheet 2
+
+(reader-sheet-1 1 1) ; "spreadsheet 1 lina 1 column 1"
+(reader-sheet-1 2 1) ; "spreadsheet 1 lina 2 column 1"
+
+(reader-sheet-2 1 1) ; "spreadsheet 2 lina 1 column 1"
+(reader-sheet-2 1 2) ; "spreadsheet 2 lina 1 column 2"
+
+; For save and close file.
+(reader-sheet-1 0 0)
+```

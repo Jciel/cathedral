@@ -131,6 +131,7 @@
 (defun read-sheet-default(file-path)
   (read-sheet (def-sheet (def-sheets file-path) 1)))
 
+
 (defun read-value(sheet-cells row col / read-variant-value value)
   (setq read-variant-value (vlax-get-property sheet-cells "item" row col)
 	value (vlax-variant-value (vlax-variant-change-type read-variant-value vlax-vbstring)))
