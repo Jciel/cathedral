@@ -61,6 +61,8 @@ new functionality for data processing in AutoLISP.
   - Excell files
     - [write-sheet-default](#filesexcell-fileswrite-sheet-default)
     - [write-sheet](#filesexcell-fileswrite-sheet)
+	- [read-sheet-default](#filesexcell-filesread-sheet-default)
+	- [read-sheet](#filesexcell-filesread-sheett)
     - [def-sheets](#filesexcell-filesdef-sheets)
     - [def-sheet](#filesexcell-filesdef-sheet)
 *******
