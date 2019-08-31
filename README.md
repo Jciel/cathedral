@@ -4,7 +4,21 @@
 Cathedral is a collection of functions to be used in developing AutoLISP routines for AutoCAD. These functions provide  
 new functionality for data processing in AutoLISP.
 
+<br>
 
+#### Installation  
+
+Download or clone the project.   
+Add de root directory ``cathedral`` in ``Suport File Search Path`` of AutoCAD ``options`` configutarion.   
+After you can load de file ``cathedral-load``   
+```lsp
+(load path-to-cathedral-load-file)
+```  
+
+Or add the file to load at AutoCAD initialization in ``appload`` configuration.  
+
+
+<br>
 <br>
 <br>
 <br>

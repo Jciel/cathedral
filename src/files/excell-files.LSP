@@ -1,3 +1,4 @@
+(vl-load-com)
 
 ;;; @description def-sheets return a list containing a VLA-OBJECT Sheets and a VLA-OBJECT _Workbook
 ;;; @description for use with def-sheet function.

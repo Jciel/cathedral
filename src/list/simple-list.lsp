@@ -191,3 +191,7 @@
 ;;;
 (defun take(count list-values)
 	(car (chunk count list-values)))
+
+
+(defun simple(dd)
+  (print dd))
