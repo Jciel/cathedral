@@ -89,11 +89,6 @@ Or add the file to load at AutoCAD initialization in ``appload`` configuration.
 
 ### __core__
 
-<div style="text-align: right">
-
-###### [Summary](#summary)
-
-</div>
 
 ##### __core/|>>__  
 
@@ -141,7 +136,7 @@ The same of:
 
 (* 2 (+ 5 (length lstElements)))
 ```
-
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -193,7 +188,7 @@ The same of:
 (* (+ (length lstElements) 5 4) 2)
 ```
 
-
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -216,6 +211,7 @@ Check if first parameter is not equal to second parameter
 (not= 1 1) ; nill
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -237,6 +233,7 @@ Check if the parameter is not null
 (notnull nil) ; nil
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -258,6 +255,7 @@ Check if the parameter is negative
 (neg? -2) ; T
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -278,6 +276,7 @@ Check if the parameter is even
 (even? 2) ; T
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -298,6 +297,7 @@ Check if the parameter is odd
 (odd? 2) ; nil
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -324,6 +324,7 @@ Sum if num is equal 1.
   (+ num 5)) ; nil
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -350,6 +351,7 @@ Sum if num is different 1.
   (+ num 5)) ; 7
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -371,7 +373,7 @@ The code below receives a Entity name and return the type.
 (type-entity entity-name) ; "INSERT"
 ```
 
-
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -406,6 +408,7 @@ The format is indicated by a parameter containing the options:
 (date-time "H:i:s") ; "23:57:13"
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 <br>
@@ -430,6 +433,7 @@ Receives a string and splits into parts with a reference delimiter.
 ("testing" "the" "function")
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -450,6 +454,7 @@ Receives a string and return True if the string is not empty ("").
 (str-is-empty? "") ; T
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -473,6 +478,7 @@ Receives a list of string and return a string.
 "hello world"
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -494,6 +500,7 @@ Receives a int n and a string, return n characters of the left side string.
 "te"
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -515,6 +522,7 @@ Receives a int n and a string, return n characters of the right side string.
 "ng"
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 <br>
@@ -544,6 +552,7 @@ Example that filters a list of numbers and returns only even numbers.
 (2 4 6 8)
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -568,7 +577,7 @@ Example divides a list into sublists of 4 elements.
 ((1 2 3 4) (5 6 7 8) (9))
 ```
 
-
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -592,7 +601,7 @@ Example returns values ​​from a list except those defined as a parameter.
 (1 3 4 6 8 9)
 ```
 
-
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -617,7 +626,7 @@ Example that returns the intersection of the first list in the second.
 (1 9)
 ```
 
-
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -639,6 +648,7 @@ Check if all numbers are odd.
 (every? odd? '(1 2 5 4)) ; nill
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -660,6 +670,7 @@ Check if all numbers are odd.
 (not-every? odd? '(1 2 5 4)) ; T
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -680,6 +691,7 @@ Sum all items in a list.
 (reduce + '(1 2 3)) ; 6
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -701,6 +713,7 @@ Check if exist one numbers odd.
 (not-any? odd? '(1 2 6 8)) ; T
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -722,6 +735,7 @@ Check if exist value 2 in list.
 (contains? 2 '(5 3 8 14 9)) ; nil
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -743,7 +757,7 @@ Check if exist value 2 in list.
 (take 2 '(5 3 8 2 9)) ; (5 3)
 ```
 
-
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -763,7 +777,7 @@ Return the first element of a list.
 (first '(5 6 2 7 9 8)) ; 5
 ```
 
-
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -783,7 +797,7 @@ Returns the elements of a list except the first item.
 (rest '(5 6 2 7 9 8)) ; (6 2 7 9 8)
 ```
 
-
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -806,7 +820,7 @@ Returns a list of elements while the function returned True.
 (take-while neg? list-values) ; (-1 -2 -3 -4)
 ```
 
-
+###### [Summary](#summary)
 <br>
 <br>
 <br>
@@ -832,6 +846,7 @@ Receives an association list and returns only the keys.
 ("a" "b" "c" "d" "e" "s")
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -854,6 +869,7 @@ Receives an association list and returns only the keys.
 (1 2 5 8 6 9)
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -877,6 +893,7 @@ It receives a list with join sublists and returns only those that contain the ke
 (where "a" 1 ttt)
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -898,6 +915,7 @@ Check if exist the key 2 in list.
 (contains-key? 2 '((1 . "a") (5 . "b") (3 . "c"))) ; nil
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -919,6 +937,7 @@ Check if exist the value "b" in list.
 (contains-value? "b" '((1 . "a") (5 . "h") (3 . "c"))) ; nil
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 <br>
@@ -943,6 +962,8 @@ The code below receives a Entity name from a Block and return a list of attribut
 (block-attr-values entity-name) ; (("SNAME" . "name block") ("ZSIZE" . "56") ("LFXYZ" . "0,0,0") ("BEAMDI" . "0.0") ("CONEDE" . "34") ("CONEAN" . "10.0") ("BIASMAX" . "-1"))
 ```
 
+
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -956,6 +977,7 @@ Returns the description from a attribute entity.
 ``string`` : Description of the attribute entity.  
 
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -968,6 +990,8 @@ Returns the value from a attribute entity.
 ###### Return  
 ``string`` : Value of the attribute entity.  
 
+
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -989,6 +1013,7 @@ The code below receives a Entity name and return a list of description attribute
 (block-attr entity-name) ; ("SNAME" "ZSIZE" "LFXYZ" "BEAMDI" "CONEDE" "CONEAN" "BIASMAX" "BIASMIN" "COLOR" "INTENSITY" "GNAME" "LAZ" "LAY" "LAX")
 ```
 
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -1010,6 +1035,8 @@ The code below receives a Entity name and return a list of values attributes.
 (block-values entity-name) ; ("name block" "56" "0,0,0" "0.0" "34" "10.0" "-1" "-1" "1,1,1" "1" "" "" "" "")
 ```
 
+
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -1031,6 +1058,8 @@ The code below receives a Entity name and a attribute and returne the value of a
 (block-value-by-attr entity-name "SNAME") ; "name block"
 ```
 
+
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -1062,6 +1091,8 @@ Write to a file in C:.
 (writer-sheet 0 0 "")
 ```
 
+
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -1104,6 +1135,8 @@ for this you must use the functions ``def-sheets`` and ``def-sheet``.
 (writer-sheet-1 0 0 "")
 ```
 
+
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -1124,6 +1157,8 @@ Return VLA-OBJECT Sheets and a VLA-OBJECT _Workbook from a file.
 (setq sheets (def-sheets "C:\\test.xlsx")) ; (#<VLA-OBJECT Sheets 00000000033f7278> #<VLA-OBJECT _Workbook 0000000026d1f258>)
 ```
 
+
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -1150,6 +1185,8 @@ list obtained with the def-sheets function.
 (setq sheet2 (def-sheet sheets 2)) ; (#<VLA-OBJECT _Worksheet 000000003267e238> #<VLA-OBJECT _Workbook 0000000026d1f258>)
 ```
 
+
+###### [Summary](#summary)
 <br>
 <br>
 
@@ -1176,6 +1213,8 @@ Read to a file in C:.
 (reader-sheet 0 0)
 ```
 
+
+###### [Summary](#summary)
 <br>
 <br>
 
