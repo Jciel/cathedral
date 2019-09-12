@@ -89,7 +89,12 @@ Or add the file to load at AutoCAD initialization in ``appload`` configuration.
 
 ### __core__
 
+<div style="text-align: right">
+
 ###### [Summary](#summary)
+
+</div>
+
 ##### __core/|>>__  
 
 Creates a function pipe by passing the result of a function as a last parameter to the next function.  
