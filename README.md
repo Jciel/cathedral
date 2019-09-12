@@ -58,6 +58,9 @@ Or add the file to load at AutoCAD initialization in ``appload`` configuration.
     - [not-any?](#listsimple-listnot-any)
     - [contains?](#listsimple-listcontains)
     - [take](#listsimple-listtake)
+    - [first](#listsimple-listfirst)
+    - [rest](#listsimple-listrest)
+    - [take-while](#listsimple-listtake-while)
   - Association List
     - [only-keys](#listassociation-listonly-keys)
     - [only-values](#listassociation-listonly-values)
@@ -86,6 +89,7 @@ Or add the file to load at AutoCAD initialization in ``appload`` configuration.
 
 ### __core__
 
+###### [Summary](#summary)
 ##### __core/|>>__  
 
 Creates a function pipe by passing the result of a function as a last parameter to the next function.  
@@ -732,6 +736,69 @@ Check if exist value 2 in list.
 
 ```lsp
 (take 2 '(5 3 8 2 9)) ; (5 3)
+```
+
+
+<br>
+<br>
+
+##### __list/simple-list/first__  
+Return the first element of a list, like car.   
+
+###### Parameters   
+``list`` : ``list-values`` : List of values.   
+
+###### Return  
+``any`` : First element of a list.  
+
+###### Exemple  
+Return the first element of a list.  
+
+```lsp
+(first '(5 6 2 7 9 8)) ; 5
+```
+
+
+<br>
+<br>
+
+##### __list/simple-list/rest__  
+Returns the elements of a list except the first item, like cdr.   
+
+###### Parameters   
+``list`` : ``list-values`` : List of values.   
+
+###### Return  
+``list`` : Elements of a list except the first item.   
+
+###### Exemple  
+Returns the elements of a list except the first item.   
+
+```lsp
+(rest '(5 6 2 7 9 8)) ; (6 2 7 9 8)
+```
+
+
+<br>
+<br>
+
+##### __list/simple-list/take-while__  
+Returns a list of elements where the passed function returns True.   
+Stop when the function returns nil for any element.   
+
+###### Parameters   
+``function`` : ``callback`` : Function for test elements.    
+``list`` : ``list-values`` : List of values.    
+
+###### Return  
+``list`` : List of elements while returning function True.   
+
+###### Exemple  
+Returns a list of elements while the function returned True.   
+
+```lsp
+(setq list-values '(-1 -2 -3 -4 8 9 3 7 -6 -3))
+(take-while neg? list-values) ; (-1 -2 -3 -4)
 ```
 
 

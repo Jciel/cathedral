@@ -193,5 +193,61 @@
 	(car (chunk count list-values)))
 
 
-(defun simple(dd)
-  (print dd))
+;;; @description Return the first element of a list, like car.
+;;;
+;;; @parameters list : list-values : List of values.
+;;;
+;;; @return any : First element of a list.
+;;;
+;;; @exempleDescription Return the first element of a list.
+;;;
+;;; @exempleCode (first '(5 6 2 7 9 8)) ; 5
+;;;
+(defun first(list-values)
+  (car list-values))
+
+
+;;; @description Returns the elements of a list except the first item, like cdr.
+;;;
+;;; @parameters list : list-values : List of values.
+;;;
+;;; @return list : Elements of a list except the first item.
+;;;
+;;; @exempleDescription Returns the elements of a list except the first item.
+;;;
+;;; @exempleCode (rest '(5 6 2 7 9 8)) ; (6 2 7 9 8)
+;;;
+(defun rest(list-values)
+  (cdr list-values))
+
+
+;;; @description Returns a list of elements where the passed function returns True.
+;;; @description Stops when the function returns nil for any element.
+;;;
+;;; @parameters function : callback : Function for test elements.
+;;; @parameters list : list-values : List of values.
+;;;
+;;; @return list : List of elements while returning function True.
+;;;
+;;; @exempleDescription Returns a list of elements while the function returned True.
+;;;
+;;; @exempleCode (setq list-values '(-1 -2 -3 -4 8 9 3 7 -6 -3))
+;;; @exempleCode (take-while neg? list-values) ; (-1 -2 -3 -4)
+;;;
+ (defun take-while(callback list-values / aux)
+  (setq aux '())
+  (while (callback (first list-values))
+    (setq aux (append aux (list (first list-values))))
+    (setq list-values (rest list-values)))
+  aux)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
