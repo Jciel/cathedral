@@ -1,5 +1,8 @@
 # Cathedral
 
+<img src="https://svgshare.com/i/F6A.svg" width="250" alt="Cathedral">
+
+<br>
 
 Cathedral is a collection of functions to be used in developing AutoLISP routines for AutoCAD. These functions provide  
 new functionality for data processing in AutoLISP.
@@ -1260,3 +1263,17 @@ for this you must use the functions ``def-sheets`` and ``def-sheet``.
 ; For save and close file.
 (reader-sheet-1 0 0)
 ```
+
+
+___
+
+<div>
+	Icons made by
+	<a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">
+		Eucalyp
+	</a>
+	from
+	<a href="https://www.flaticon.com/" title="Flaticon">
+		www.flaticon.com
+	</a>
+</div>
