@@ -47,6 +47,7 @@ Or add the file to load at AutoCAD initialization in ``appload`` configuration.
   - [when](#corewhen)
   - [when-not](#corewhen-not)
   - [type-entity](#coretype-entity)
+  - [if-not](#coreif-not)
   - Date-Time
 	- [date-time](#coredate-time-1)
 - **String**
@@ -70,6 +71,7 @@ Or add the file to load at AutoCAD initialization in ``appload`` configuration.
     - [first](#listsimple-listfirst)
     - [rest](#listsimple-listrest)
     - [take-while](#listsimple-listtake-while)
+    - [keep](#listsimple-listkeep)
   - Association List
     - [only-keys](#listassociation-listonly-keys)
     - [only-values](#listassociation-listonly-values)
@@ -385,6 +387,35 @@ The code below receives a Entity name and return the type.
 ###### [Summary](#summary)
 <br>
 <br>
+
+
+##### __core/if-not__   
+Execute body if test is False (nil).  
+
+###### Parameters  
+``exp`` : ``test`` : Logical test.   
+``exp`` : ``body`` : Expression to execute.   
+
+###### Return  
+``any`` : Return the result of execution body.  
+
+###### Exemple  
+Sum if num is different 1.  
+
+```lsp
+(setq num 1)
+(if-not (= num 1)
+  (+ num 5)) ; nil
+
+(setq num 2)
+(if-not (= num 1)
+  (+ num 5)) ; 7
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
 
 ### __Date-Time__
 
@@ -830,6 +861,30 @@ Returns a list of elements while the function returned True.
 ```
 
 ###### [Summary](#summary)
+
+<br>
+<br>
+
+##### __list/simple-list/keep__  
+Return a list of result application a callback function in elements of a list.   
+
+###### Parameters   
+``function`` : ``callback`` : Function for apply in elements.    
+``list`` : ``list-values`` : List of values.    
+
+###### Return  
+``list`` : List of result application function in elements of a list.   
+
+###### Exemple  
+Sum 2 for each element in a list.   
+
+```lsp
+(setq list-values '(1 2 3 4 5))
+(keep (lambda (x) (+ x 2)) list-values) ; (3 4 5 6 7)
+```
+
+###### [Summary](#summary)
+
 <br>
 <br>
 <br>

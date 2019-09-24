@@ -242,9 +242,9 @@
   aux)
 
 
-;;; @description Reeturn a list of result application a callback function in elements of a list.
+;;; @description Return a list of result application a callback function in elements of a list.
 ;;;
-;;; @parameters function : callback : Function for apply elements.
+;;; @parameters function : callback : Function for apply in elements.
 ;;; @parameters list : list-values : List of values.
 ;;;
 ;;; @return list : List of result application function in elements of a list.
