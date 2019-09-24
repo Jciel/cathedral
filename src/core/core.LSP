@@ -152,7 +152,7 @@
 	body))
 
 
-;;; @description Execute body if test is False (nil).
+;;; @description Execute body when test is False (nil).
 ;;;
 ;;; @parameters exp : test : Logical test.
 ;;; @parameters exp : body : Expression to execute.
@@ -186,3 +186,24 @@
 ;;;
 (defun type-entity(entity-name)
   (cdr (assoc 0 (entget entity-name))))
+  
+
+;;; @description Execute body if test is False (nil).
+;;;
+;;; @parameters exp : test : Logical test.
+;;; @parameters exp : body : Expression to execute.
+;;;
+;;; @return any : Return the result of execution body.
+;;;
+;;; @exempleDescription Sum if num is different 1.
+;;;
+;;; @exempleCode (setq num 1)
+;;; @exempleCode (if-not (= num 1)
+;;; @exempleCode   (+ num 5)) ; nil
+;;;
+;;; @exempleCode (setq num 2)
+;;; @exempleCode (if-not (= num 1)
+;;; @exempleCode   (+ num 5)) ; 7
+;;;
+(defun if-not(test body)
+	(if (not test) body))
