@@ -25,6 +25,7 @@ After you can load de file ``cathedral-load``
 ```  
 
 Or add the file to load at AutoCAD initialization in ``appload`` configuration.  
+And functions will be available from the autocad command line and its AutoLISP codes.   
 
 
 <br>
