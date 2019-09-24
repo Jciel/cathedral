@@ -240,8 +240,24 @@
     (setq aux (append aux (list (first list-values))))
     (setq list-values (rest list-values)))
   aux)
- 
- 
+
+
+;;; @description Reeturn a list of result application a callback function in elements of a list.
+;;;
+;;; @parameters function : callback : Function for apply elements.
+;;; @parameters list : list-values : List of values.
+;;;
+;;; @return list : List of result application function in elements of a list.
+;;;
+;;; @exempleDescription Sum 2 for each element in a list.
+;;;
+;;; @exempleCode (setq list-values '(1 2 3 4 5))
+;;; @exempleCode (keep (lambda (x) (+ x 2)) list-values) ; (3 4 5 6 7)
+;;;
+(defun keep(callback list-values / item aux)
+  (foreach item list-values
+	(setq aux (append aux (list (callback item)))))
+  aux)	
  
  
  
