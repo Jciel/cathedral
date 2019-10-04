@@ -93,7 +93,9 @@ And functions will be available from the autocad command line and its AutoLISP c
 	- [read-sheet-default](#filesexcell-filesread-sheet-default)
 	- [read-sheet](#filesexcell-filesread-sheet)
 	- [read-row-while-get](#filesexcell-filesread-row-while-get)
+	- [read-col-while-get](#filesexcell-filesread-col-while-get)
 	- [read-row-at](#filesexcell-filesread-row-at)
+	- [read-col-at](#filesexcell-filesread-col-at)
     - [def-sheets](#filesexcell-filesdef-sheets)
     - [def-sheet](#filesexcell-filesdef-sheet)
 *******
@@ -1378,6 +1380,61 @@ Read line from a file in C:.
 (reader-sheet 0 0)
 ```
 ###### [Summary](#summary)
+
+<br>
+<br>
+
+##### __files/excell-files/read-col-while-get__  
+The function read-col-while-get reads the contents of the parameter col as long as it has     
+contents in the rows. If find a row without content stop the reading.    
+
+###### Parameters   
+``int`` : ``col`` : Column number for reading.   
+``function`` : ``reader-sheet`` : "Reader" obtained with the ``read-sheet-default`` or `` read-sheet`` function.   
+
+###### Return   
+``list`` : List containing the content read from the rows in the file.    
+
+###### Exemple   
+Read line from a file in C:.    
+
+```lsp
+(setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+(read-col-while-get 1 reader-sheet) ; ("A" "F" "K")
+(read-col-while-get 2 reader-sheet) ; ("B" "G" "L")
+
+; For close file.
+(reader-sheet 0 0)
+```
+###### [Summary](#summary)
+
+<br>
+<br>
+
+##### __files/excell-files/read-col-at__  
+The function read-col-at reads the contents of the parameter col from the first row   
+to the row indicated in the second parameter, including empty row.    
+
+###### Parameters   
+``int`` : ``col`` : Column number for reading.    
+``int`` : ``row-limit`` : Indicates up to which row to read.     
+``function`` : ``reader-sheet`` : "Reader" obtained with the ``read-sheet-default`` or `` read-sheet`` function.   
+
+###### Return  
+``list`` : List containing the content read from the column in the file from row 1 to row-limit.    
+
+###### Exemple  
+Read column from a file in C:.    
+
+```lsp
+(setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+(read-col-at 1 5 reader-sheet) ; ("A" "F" "K" "" "")
+
+; For close file.
+(reader-sheet 0 0)
+```
+###### [Summary](#summary)
+
 
 ___
 
