@@ -92,6 +92,8 @@ And functions will be available from the autocad command line and its AutoLISP c
     - [write-sheet](#filesexcell-fileswrite-sheet)
 	- [read-sheet-default](#filesexcell-filesread-sheet-default)
 	- [read-sheet](#filesexcell-filesread-sheet)
+	- [read-row-while-get](#filesexcell-filesread-row-while-get)
+	- [read-row-at](#filesexcell-filesread-row-at)
     - [def-sheets](#filesexcell-filesdef-sheets)
     - [def-sheet](#filesexcell-filesdef-sheet)
 *******
@@ -1319,7 +1321,63 @@ for this you must use the functions ``def-sheets`` and ``def-sheet``.
 ; For save and close file.
 (reader-sheet-1 0 0)
 ```
+###### [Summary](#summary)
 
+<br>
+<br>
+
+##### __files/excell-files/read-row-while-get__  
+The function read-row-while-get reads the contents of the parameter row as long as it has contents in the columns.   
+If find a column without content stop the reading.   
+
+###### Parameters  
+``int`` : ``row`` : Line number for reading.   
+``function`` : ``reader-sheet`` : "Reader" obtained with the ``read-sheet-default`` or `` read-sheet`` function.   
+
+###### Return  
+``list`` : List containing the content read from the line in the file.   
+
+###### Exemple  
+Read line from a file in C:.  
+
+```lsp
+(setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+(read-row-while-get 1 reader-sheet) ; ("A" "B" "C" "D" "E")
+(read-row-while-get 2 reader-sheet) ; ("Line 2 A" "Line 2 B" "Line 2 C" "Line 2 D" "Line 2 E")
+
+; For close file.
+(reader-sheet 0 0)
+```
+###### [Summary](#summary)
+
+<br>
+<br>
+
+##### __files/excell-files/read-row-at__  
+The function read-row-at reads the contents of the parameter row from the first column to the column    
+indicated in the second parameter, including empty columns.    
+
+###### Parameters   
+``int`` : ``row`` : Line number for reading.   
+``int`` : ``col-limit`` : Indicates up to which column to read.   
+``function`` : ``reader-sheet`` : "Reader" obtained with the ``read-sheet-default`` or `` read-sheet`` function.   
+
+###### Return  
+``list`` : List containing the content read from the line in the file from column 1 to col-limit.    
+
+###### Exemple  
+Read line from a file in C:.    
+
+```lsp
+(setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+(read-row-at 1 5 reader-sheet) ; ("A" "B" "C" "D" "E")
+(read-row-at 1 8 reader-sheet) ; ("A" "B" "C" "D" "E" "" "" "")
+(read-row-at 2 7 reader-sheet) ; ("Line 2 A" "Line 2 B" "Line 2 C" "Line 2 D" "Line 2 E" "" "Line 2 G")
+
+; For close file.
+(reader-sheet 0 0)
+```
+###### [Summary](#summary)
 
 ___
 
