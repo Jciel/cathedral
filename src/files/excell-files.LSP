@@ -136,7 +136,7 @@
 ;;; @description The function read-row-while-get reads the contents of the parameter row as long as it has 
 ;;; @description contents in the columns. If find a column without content stop the reading.
 ;;;
-;;; @parameters int : row : Line number for reading.
+;;; @parameters int : row : Row number for reading.
 ;;; @parameters function : reader-sheet : "Reader" obtained with the `` read-sheet-default`` or `` read-sheet`` function.
 ;;;
 ;;; @return list : List containing the content read from the line in the file.
@@ -156,10 +156,33 @@
   result)
 
 
+;;; @description The function read-col-while-get reads the contents of the parameter col as long as it has 
+;;; @description contents in the rows. If find a row without content stop the reading.
+;;;
+;;; @parameters int : col : Column number for reading.
+;;; @parameters function : reader-sheet : "Reader" obtained with the `` read-sheet-default`` or `` read-sheet`` function.
+;;;
+;;; @return list : List containing the content read from the rows in the file.
+;;;
+;;; @exempleDescription	Read line from a file in C:.
+;;;
+;;; @exempleCode (setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+;;; @exempleCode (read-col-while-get 1 reader-sheet) ; ("A" "F" "K")
+;;; @exempleCode (read-col-while-get 2 reader-sheet) ; ("B" "G" "L")
+;;;
+(defun read-col-while-get(col reader-sheet / result row content)
+  (setq result '()
+    row 1)
+  (while (str-is-not-empty? (setq content (reader-sheet row col)))
+	(setq result (append result (list content))
+		  row (1+ row)))
+  result)
+
+
 ;;; @description The function read-row-at reads the contents of the parameter row from the first column
 ;;; @description to the column indicated in the second parameter, including empty columns.
 ;;;
-;;; @parameters int : row : Line number for reading.
+;;; @parameters int : row : Row number for reading.
 ;;; @parameters int : col-limit : Indicates up to which column to read.
 ;;; @parameters function : reader-sheet : "Reader" obtained with the `` read-sheet-default`` or `` read-sheet`` function.
 ;;;
@@ -182,7 +205,56 @@
   result)
 
 
+;;; @description The function read-col-at reads the contents of the parameter col from the first row
+;;; @description to the row indicated in the second parameter, including empty row.
+;;;
+;;; @parameters int : col : Column number for reading.
+;;; @parameters int : row-limit : Indicates up to which row to read.
+;;; @parameters function : reader-sheet : "Reader" obtained with the `` read-sheet-default`` or `` read-sheet`` function.
+;;;
+;;; @return list : List containing the content read from the column in the file from row 1 to row-limit.
+;;;
+;;; @exempleDescription	Read line from a file in C:.
+;;;
+;;; @exempleCode (setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+;;; @exempleCode (read-col-at 1 5 reader-sheet) ; ("A" "F" "K" "" "")
+;;;
+(defun read-col-at(col row-limit reader-sheet / result current-row)
+  (setq result '()
+		current-row 1)
+  (while (<= current-row row-limit)
+	(setq result (append result (list (reader-sheet current-row col)))
+		  current-row (1+ current-row))
+  )
+  result)
+
+
+
 (defun read-value(sheet-cells row col / read-variant-value value)
   (setq read-variant-value (vlax-get-property sheet-cells "item" row col)
 	value (vlax-variant-value (vlax-variant-change-type read-variant-value vlax-vbstring)))
   value)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
