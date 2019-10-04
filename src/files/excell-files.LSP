@@ -133,15 +133,56 @@
   (read-sheet (def-sheet (def-sheets file-path) 1)))
 
 
+;;; @description The function read-row-while-get reads the contents of the parameter row as long as it has 
+;;; @description contents in the columns. If find a column without content stop the reading.
+;;;
+;;; @parameters int : row : Line number for reading.
+;;; @parameters function : reader-sheet : "Reader" obtained with the `` read-sheet-default`` or `` read-sheet`` function.
+;;;
+;;; @return list : List containing the content read from the line in the file.
+;;;
+;;; @exempleDescription	Read line from a file in C:.
+;;;
+;;; @exempleCode (setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+;;; @exempleCode (read-row-while-get 1 reader-sheet) ; ("A" "B" "C" "D" "E")
+;;; @exempleCode (read-row-while-get 2 reader-sheet) ; ("Line 2 A" "Line 2 B" "Line 2 C" "Line 2 D" "Line 2 E")
+;;;
+(defun read-row-while-get(row reader-sheet / result col content)
+  (setq result '()
+    col 1)
+  (while (str-is-not-empty? (setq content (reader-sheet row col)))
+	(setq result (append result (list content))
+		  col (1+ col)))
+  result)
+
+
+;;; @description The function read-row-at reads the contents of the parameter row from the first column
+;;; @description to the column indicated in the second parameter, including empty columns.
+;;;
+;;; @parameters int : row : Line number for reading.
+;;; @parameters int : col-limit : Indicates up to which column to read.
+;;; @parameters function : reader-sheet : "Reader" obtained with the `` read-sheet-default`` or `` read-sheet`` function.
+;;;
+;;; @return list : List containing the content read from the line in the file from column 1 to col-limit.
+;;;
+;;; @exempleDescription	Read line from a file in C:.
+;;;
+;;; @exempleCode (setq reader-sheet (read-sheet-default "C:\\test.xlsx"))
+;;; @exempleCode (read-row-at 1 5 reader-sheet) ; ("A" "B" "C" "D" "E")
+;;; @exempleCode (read-row-at 1 8 reader-sheet) ; ("A" "B" "C" "D" "E" "" "" "")
+;;; @exempleCode (read-row-at 2 7 reader-sheet) ; ("Line 2 A" "Line 2 B" "Line 2 C" "Line 2 D" "Line 2 E" "" "Line 2 G")
+;;;
+(defun read-row-at(row col-limit reader-sheet / result current-col)
+  (setq result '()
+		current-col 1)
+  (while (<= current-col col-limit)
+	(setq result (append result (list (reader-sheet row current-col)))
+		  current-col (1+ current-col))
+  )
+  result)
+
+
 (defun read-value(sheet-cells row col / read-variant-value value)
   (setq read-variant-value (vlax-get-property sheet-cells "item" row col)
 	value (vlax-variant-value (vlax-variant-change-type read-variant-value vlax-vbstring)))
   value)
-
-
-
-
-
-
-
-

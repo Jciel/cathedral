@@ -27,7 +27,7 @@
 ;;;
 ;;; @return bool :  True (T) if string is empty ("") and nill otherwise.
 ;;;
-;;; @exempleDescription Receives a string and return True if the string is not empty ("").
+;;; @exempleDescription Receives a string and return True if the string is empty ("").
 ;;;
 ;;; @exempleCode (str-is-empty? "testing")
 ;;; @exempleCode nill
@@ -38,6 +38,24 @@
 (defun str-is-empty?(string)
   (eq string ""))
 
+
+;;; @description The str-is-not-empty? function return True (T) if string is not empty ("") and nil otherwise.
+;;;
+;;; @parameters string : string : String to be check.
+;;;
+;;; @return bool :  True (T) if string is not empty ("") and nil otherwise.
+;;;
+;;; @exempleDescription Receives a string and return True if the string is not empty ("").
+;;;
+;;; @exempleCode (str-is-not-empty? "testing")
+;;; @exempleCode T
+;;;
+;;; @exempleCode (str-is-not-empty? "")
+;;; @exempleCode nil
+;;;
+(defun str-is-not-empty?(string)
+  (not (str-is-empty? string)))
+  
 
 ;;; @description The str-join function gets a list of string and joins these string abd returns a string only.
 ;;;
