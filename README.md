@@ -12,6 +12,7 @@ new functionality for data processing in AutoLISP.
 ### Contribute  
 Fork the project and create a Pull Request :)   
 or send a sugestion in Issues :)
+and start the project! ;P
 
 <br>
 
