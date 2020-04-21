@@ -78,11 +78,11 @@
 ;;; @exempleCode (diagonal-matrix? matrix2) ; nill
 ;;;
 (defun diagonal-matrix? (matrix / alter-matrix)
-	(if (null-matrix? matrix)
-		T
-		(progn 
-			(setq alter-matrix (nullify-diagonal-matrix matrix))
-			(null-matrix? alter-matrix))))
+  (if (null-matrix? matrix)
+    T
+    (progn 
+      (setq alter-matrix (nullify-diagonal-matrix matrix))
+      (null-matrix? alter-matrix))))
 
 
 ;;; @description Function nullify-diagonal-matrix nullify the main diagonal of a matrix.
@@ -101,21 +101,22 @@
   (setq len (length matrix)
 	    index 0
 	    n 0
-		aux '())
+        aux '())
 		
-  (mapcar '(lambda (row)
-             (setq aux '())
-             (while (< n len)
-               (if (= index n)
-	             (setq v 0)
-	             (setq v (nth n row)))
+  (mapcar
+    '(lambda (row)
+      (setq aux '())
+      (while (< n len)
+        (if (= index n)
+          (setq v 0)
+          (setq v (nth n row)))
 	
-               (setq aux (append aux (list v))
-		             n (+ n 1)))
+        (setq aux (append aux (list v))
+              n (+ n 1)))
 				
-            (setq index (+ 1 index)
-	              n 0)
-              aux) matrix))
+      (setq index (+ 1 index)
+            n 0)
+            aux) matrix))
 
 
 
@@ -137,8 +138,7 @@
     '(lambda (row)
 	  (setq item (nth index row))
 	  (setq index (+ index 1))
-	  item)
-	matrix))
+	  item) matrix))
 
 
 ;;; @description identity-matrix? function checks if a matrix is ​​identity matrix.
@@ -176,7 +176,7 @@
 ;;; @exempleCode (identity-matrix 4) ; ((1 0 0 0) (0 1 0 0) (0 0 1 0) (0 0 0 1))
 ;;; @exempleCode (identity-matrix 3) ; ((1 0 0) (0 1 0) (0 0 1))
 ;;;
-(defun identity-matrix(n / index c aux final)
+(defun identity-matrix(n / index c v aux final)
   (setq index 0
         c 0
         aux '()
@@ -194,7 +194,7 @@
     (setq aux '())
     (setq index (+ index 1))
     (setq c 0))
-	final)
+  final)
 
 
 ;;; @description transpose-matrix returns the matrix transposed from a matrix.

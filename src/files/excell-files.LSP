@@ -200,8 +200,7 @@
 		current-col 1)
   (while (<= current-col col-limit)
 	(setq result (append result (list (reader-sheet row current-col)))
-		  current-col (1+ current-col))
-  )
+		  current-col (1+ current-col)))
   result)
 
 
@@ -224,8 +223,7 @@
 		current-row 1)
   (while (<= current-row row-limit)
 	(setq result (append result (list (reader-sheet current-row col)))
-		  current-row (1+ current-row))
-  )
+		  current-row (1+ current-row)))
   result)
 
 
