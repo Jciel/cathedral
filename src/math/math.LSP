@@ -155,7 +155,7 @@
 ;;; @exempleCode (square-matrix? matrix) ; T
 ;;; @exempleCode (square-matrix? matrix2) ; nill
 ;;;
-(defun identity-matrix?(matrix)
+(defun identity-matrix?(matrix / dm diagonal d)
   (setq dm (diagonal-matrix? matrix)
         diagonal (main-diagonal-matrix matrix)
         d (every? (lambda (x) (= x 1)) diagonal))
@@ -163,6 +163,85 @@
   (if (and dm d)
     T
     nill))
+
+
+;;; @description identity-matrix returns an identity matrix.
+;;;
+;;; @parameters int : n : Matrix size.
+;;;
+;;; @return list : Returns an identity matrix of size n.
+;;;
+;;; @exempleDescription	Returns an identity matrix of size n.
+;;;
+;;; @exempleCode (identity-matrix 4) ; ((1 0 0 0) (0 1 0 0) (0 0 1 0) (0 0 0 1))
+;;; @exempleCode (identity-matrix 3) ; ((1 0 0) (0 1 0) (0 0 1))
+;;;
+(defun identity-matrix(n / index c aux final)
+  (setq index 0
+        c 0
+        aux '()
+        final '())
+	
+  (repeat n
+    (while (< c n)
+      (if (= index c)
+        (setq v 1)
+        (setq v 0))
+      (setq aux (append aux (list v)))
+      (setq c (+ c 1)))
+		
+    (setq final (append final (list aux)))
+    (setq aux '())
+    (setq index (+ index 1))
+    (setq c 0))
+	final)
+
+
+;;; @description transpose-matrix returns the matrix transposed from a matrix.
+;;;
+;;; @parameters list : matrix : Matrix to transpose.
+;;;
+;;; @return list : Returns the transposed matrix.
+;;;
+;;; @exempleDescription	Returns the matrix transposed from a matrix.
+;;;
+;;; @exempleCode (setq matrix '((1 2) (3 4) (5 6)))
+;;; @exempleCode (transpose-matrix matrix) ; ((1 3 5) (2 4 6))
+;;;
+(defun transpose-matrix(matrix / index len final aux)
+  (setq index 0
+  len (length (first matrix))
+  final '())
+	
+  (defun get-items(matrix index)
+    (mapcar
+      '(lambda (row)
+        (nth index row)) matrix))
+
+  (repeat len
+    (setq aux (get-items matrix index)
+          final (append final (list aux))
+          index (+ index 1)
+          aux '()))
+  final)
+
+
+
+
+((1 2)
+ (3 4)
+ (5 6))
+
+
+
+
+
+
+
+
+
+
+
 
 
 
