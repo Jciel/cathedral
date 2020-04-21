@@ -226,14 +226,91 @@
   final)
 
 
+;;; @description +matrix function adds two matrices.
+;;;
+;;; @parameters list : matrix-a : Matrix to sum.
+;;; @parameters list : matrix-b : Matrix to sum.
+;;;
+;;; @return list : Returns the sum of two matrices.
+;;;
+;;; @exempleDescription	Returns the sum of two matrices.
+;;;
+;;; @exempleCode (setq matrix-a '((1 2) (3 4) (5 6)))
+;;; @exempleCode (setq matrix-b '((1 2) (3 4) (5 6)))
+;;; @exempleCode (add-matrix matrix-a matrix-b) ; ((2 4) (6 8) (10 12))
+;;;
+(defun +matrix(matrix-a matrix-b)
+  (defun add-row(row-a row-b)
+    (mapcar '+ row-a row-b))
+	
+  (mapcar 'add-row matrix-a matrix-b))
 
 
-((1 2)
- (3 4)
- (5 6))
+
+
+;;; @description -matrix function subtracts two matrices.
+;;;
+;;; @parameters list : matrix-a : Matrix to sub.
+;;; @parameters list : matrix-b : Matrix to sub.
+;;;
+;;; @return list : Returns the subtraction of two matrices.
+;;;
+;;; @exempleDescription	Returns the sum of two matrices.
+;;;
+;;; @exempleCode (setq matrix-a '((1 2) (3 4) (5 6)))
+;;; @exempleCode (setq matrix-b '((2 1) (8 4) (5 10)))
+;;; @exempleCode (-matrix matrix-a matrix-b) ; ((-1 1) (-5 0) (0 -4))
+;;;
+(defun -matrix(matrix-a matrix-b)
+  (defun sub-row(row-a row-b)
+    (mapcar '- row-a row-b))
+	
+  (mapcar 'sub-row matrix-a matrix-b))
+
+
+;;; @description *smatrix function multiplies a scalar by an matrix.
+;;;
+;;; @parameters number : scalar : Scalar to multiply.
+;;; @parameters list : matrix : Matrix to multiply.
+;;;
+;;; @return list : Returns a matrix resulting from multiplication.
+;;;
+;;; @exempleDescription	Returns a matrix resulting from multiplication.
+;;;
+;;; @exempleCode (setq matrix '((2 3) (4 6)))
+;;;
+;;; @exempleCode (*smatrix 2 matrix) ; ((4 6) (8 12))
+;;;
+(defun *smatrix(scalar matrix)
+  (defun mult-row(row)
+    (mapcar '(lambda (x) (* scalar x)) row))
+	
+  (mapcar 'mult-row matrix))
 
 
 
+;;; @description *matrix function multiplies two matrices.
+;;;
+;;; @parameters list : matrix-a : Matrix to multiply.
+;;; @parameters list : matrix-b : Matrix to multiply.
+;;;
+;;; @return list : Returns a matrix resulting from multiplication.
+;;;
+;;; @exempleDescription	Returns a matrix resulting from multiplication.
+;;;
+;;; @exempleCode (setq matrix-a '((2 3) (4 6)))
+;;; @exempleCode (setq matrix-b '((1 2 0) (2 1 1)))
+;;; @exempleCode (*matrix matrix-a matrix-b) ; ((8 9 3) (16 18 6))
+;;;
+(defun *matrix(matrix-a matrix-b)
+  (setq b-tranpose (transpose-matrix matrix-b))
+	
+  (defun mult-matrix(row-a)
+    (mapcar
+	  '(lambda (row-b)
+	    (apply '+ (mapcar '* row-a row-b))) b-tranpose))
+		
+  (mapcar 'mult-matrix matrix-a))
 
 
 
