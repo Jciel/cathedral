@@ -237,15 +237,10 @@
 ;;;
 ;;; @exempleCode (setq matrix-a '((1 2) (3 4) (5 6)))
 ;;; @exempleCode (setq matrix-b '((1 2) (3 4) (5 6)))
-;;; @exempleCode (add-matrix matrix-a matrix-b) ; ((2 4) (6 8) (10 12))
+;;; @exempleCode (+matrix matrix-a matrix-b) ; ((2 4) (6 8) (10 12))
 ;;;
 (defun +matrix(matrix-a matrix-b)
-  (defun add-row(row-a row-b)
-    (mapcar '+ row-a row-b))
-	
-  (mapcar 'add-row matrix-a matrix-b))
-
-
+  (mapcar '+vector matrix-a matrix-b))
 
 
 ;;; @description -matrix function subtracts two matrices.
@@ -314,10 +309,112 @@
 
 
 
+;;; @description *svector function multiplies a scalar by an vector.
+;;;
+;;; @parameters number : scalar : Scalar to multiply.
+;;; @parameters list : vector : Vector to multiply.
+;;;
+;;; @return list : Returns a vector resulting from multiplication.
+;;;
+;;; @exempleDescription	Returns a vector resulting from multiplication.
+;;;
+;;; @exempleCode (setq vector '(2 4 6 8))
+;;;
+;;; @exempleCode (*svector 2 vector) ; (4 8 12 16)
+;;;
+(defun *svector(scalar vector)
+  (mapcar '(lambda (x) (* scalar x)) vector))
 
 
+;;; @description +vector function adds two vectors.
+;;;
+;;; @parameters list : vector-a : vector to sum.
+;;; @parameters list : vector-b : vector to sum.
+;;;
+;;; @return list : Returns the sum of two vectors.
+;;;
+;;; @exempleDescription	Returns the sum of two vectors.
+;;;
+;;; @exempleCode (setq  vector-a '(1 2 3))
+;;; @exempleCode (setq  vector-b '(1 2 3)
+;;; @exempleCode (+vector vector-a vector-b) ; (2 4 6)
+;;;
+(defun +vector(vector-a vector-b)
+  (defun add-vec(v-a v-b)
+    (mapcar '+ vector-a vector-b))
+  (add-vec vector-a vector-b))
 
 
+;;; @description *i-vector function result in a internal product between two vectors.
+;;;
+;;; @parameters list : vector-a : vector to process.
+;;; @parameters list : vector-b : vector to process.
+;;;
+;;; @return list : Returns a internal product between two vectors.
+;;;
+;;; @exempleDescription	Returns a internal product between two vectors.
+;;;
+;;; @exempleCode (setq  vector-a '(2 3 ))
+;;; @exempleCode (setq  vector-b '(4 3)
+;;; @exempleCode (*i-vector vector-a vector-b) ; 17
+;;;
+(defun *i-vector(vector-a vector-b / vals)
+  (setq vals (mapcar
+               '(lambda (va vb)
+			     (* va vb)) vector-a vector-b))
+  (reduce
+    (lambda (acc v)
+	  (+ acc v)) vals 0))
+
+
+;;; @description -vector function subtracts two vectors.
+;;;
+;;; @parameters list : vector-a : vector to subtract.
+;;; @parameters list : vector-b : vector to subtract.
+;;;
+;;; @return list : Returns the subtraction of two vectors.
+;;;
+;;; @exempleDescription	Returns the subtraction of two vectors.
+;;;
+;;; @exempleCode (setq  vector-a '(1 2))
+;;; @exempleCode (setq  vector-b '(1 2)
+;;; @exempleCode (-vector vector-a vector-b) ; (0 0)
+;;;
+(defun -vector(vector-a vector-b)
+  (+vector vector-a (opposite-vector vector-b)))
+
+
+;;; @description opposite-vector returns the opposite vector of a vector.
+;;;
+;;; @parameters list : vector : vector to preocess.
+;;;
+;;; @return list : Returns the opposite vector of a vector.
+;;;
+;;; @exempleDescription	Returns the opposite vector of a vector.
+;;;
+;;; @exempleCode (setq  vector '(7 -3))
+;;; @exempleCode (-vector vector) ; (-7 3)
+;;;
+(defun opposite-vector (vector)
+  (mapcar '(lambda (x) (* x -1)) vector))
+
+
+;;; @description norm-vector returns the norm of a vector.
+;;;
+;;; @parameters list : vector : vector to preocess.
+;;;
+;;; @return list : Returns the norm of a vector.
+;;;
+;;; @exempleDescription	Returns the norm of a vector.
+;;;
+;;; @exempleCode (setq  vector '(3 -4))
+;;; @exempleCode (norm-vector vector) ; 5
+;;;
+(defun norm-vector(vector)
+  (sqrt
+    (reduce
+      (lambda (acc v)
+        (+ acc (expt v 2))) vector 0)))
 
 
 
