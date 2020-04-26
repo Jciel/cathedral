@@ -52,6 +52,8 @@ And functions will be available from the autocad command line and its AutoLISP c
   - [if-not](#coreif-not)
   - Date-Time
 	- [date-time](#coredate-time-1)
+- **Math**
+  - [null-matrix?] (#null-matrix?)
 - **String**
   - [str-split](#stringstr-split)
   - [str-is-empty](#stringstr-is-empty)
@@ -458,6 +460,325 @@ The format is indicated by a parameter containing the options:
 <br>
 <br>
 <br>
+
+### __math__  
+
+
+##### __math/null-matrix?__ 
+null-matrix? function check if the matrix argument is a null matrix.  
+
+###### Parameters  
+``list`` : ``matrix`` : Matrix to check.  
+
+###### Return  
+``bool`` : If the matrix is a null matrix return T else return nill.  
+
+###### Exemple  
+If the matrix is a null matrix return T else return nill.  
+
+```lsp
+(setq matrix '((1 2 3) (4 5 6)))
+(null-matrix? matrix) ;; nill
+
+(setq matrix '((0 0 0) (0 0 0)))
+(null-matrix? matrix) ;; T
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/null-matrix__ 
+null-matrix function create a MxN null matrix.   
+
+###### Parameters  
+``int`` : ``m`` : Number of rows in the matrix.  
+``int`` : ``n`` : Number of columns in the matrix.  
+
+###### Return  
+``list`` : Null matrix MxN.  
+
+###### Exemple  
+Return a Null matrix MxN.  
+
+```lsp
+(null-matrix 2 3) ; ((0 0 0) (0 0 0)
+(null-matrix 4 4) ; ((0 0 0 0) (0 0 0 0) (0 0 0 0) (0 0 0 0))
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/square-matrix?__ 
+square-matrix? function check if a matrix is an square matrix.  
+
+###### Parameters  
+``list`` : ``matrix`` : Matrix to check.   
+
+###### Return  
+``boll`` : Return T if the matriz is a square matrix, else return nill.  
+
+###### Exemple  
+Return T if the matriz is a square matrix, else return nill.  
+
+```lsp
+(setq matrix '((1 2 3) (4 5 6) (7 8 9)))
+(setq matrix2 '((1 2 3) (4 5 6)))
+
+(square-matrix? matrix) ; T
+(square-matrix? matrix2) ; nill
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/diagonal-matrix?__ 
+Function diagonal-matrix? verify if the matrix is an diagonal matrix.  
+
+###### Parameters  
+``list`` : ``matrix`` : Matrix to check.   
+
+###### Return  
+``boll`` : Return T if the matriz is a diagonal matrix, else return nill.  
+
+###### Exemple  
+Return T if the matriz is a diagonal matrix, else return nill.  
+
+```lsp
+(setq matrix '((1 0 0) (0 5 0) (0 0 9)))
+(setq matrix2 '((1 2 3) (4 5 6)))
+
+(diagonal-matrix? matrix) ; T
+(diagonal-matrix? matrix2) ; nill
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/nullify-diagonal-matrix__ 
+Function nullify-diagonal-matrix nullify the main diagonal of a matrix.  
+
+###### Parameters  
+``list`` : ``matrix`` : Matrix to alter.  
+
+###### Return  
+``list`` : Return a matrix with the main diagonal null (0).  
+
+###### Exemple  
+Return a matrix with the main diagonal null.  
+
+```lsp
+(setq matrix2 '((1 2 3) (4 5 6) (7 8 9)))
+
+(nullify-diagonal-matrix matrix) ; ((0 2 3) (4 0 6) (7 8 0)
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/main-diagonal-matrix__ 
+Function main-diagonal-matrix get the items of a main diagonal matrix.  
+
+###### Parameters  
+``list`` : ``matrix`` : Matrix to get main diagonal.   
+
+###### Return  
+``list`` : Return values of main diagonal matrix.  
+
+###### Exemple  
+Return values of main diagonal matrix.  
+
+```lsp
+(setq matrix2 '((1 2 3) (4 5 6) (7 8 9)))
+
+(main-diagonal-matrix matrix) ; (1 5 9)
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/identity-matrix?__ 
+identity-matrix? function checks if a matrix is ​​identity matrix.  
+
+###### Parameters  
+``list`` : ``matrix`` : Matrix to check.    
+
+###### Return  
+``bool`` : Return T if the matriz is ​​identity matrix, else return nill.  
+
+###### Exemple  
+Return T if the matriz is ​​identity matrix, else return nill.  
+
+```lsp
+(setq matrix '((1 0 0) (0 1 0) (0 0 1))
+(setq matrix2 '((1 2 3) (4 5 6) (7 8 9)))
+
+(square-matrix? matrix) ; T
+
+(square-matrix? matrix2) ; nill
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/identity-matrix__ 
+identity-matrix returns an identity matrix.  
+
+###### Parameters  
+``int`` : ``n`` : Matrix size.  
+
+###### Return  
+``list`` : Returns an identity matrix of size n.  
+
+###### Exemple  
+Returns an identity matrix of size n.  
+
+```lsp
+(identity-matrix 4) ; ((1 0 0 0) (0 1 0 0) (0 0 1 0) (0 0 0 1))
+
+(identity-matrix 3) ; ((1 0 0) (0 1 0) (0 0 1))
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/transpose-matrix__ 
+transpose-matrix returns the matrix transposed from a matrix.  
+
+###### Parameters  
+``list`` : ``matrix`` : Matrix to transpose.  
+
+###### Return  
+``list`` : Returns the transposed matrix.   
+
+###### Exemple  
+Returns the matrix transposed from a matrix.   
+
+```lsp
+(setq matrix '((1 2) (3 4) (5 6)))
+
+(transpose-matrix matrix) ; ((1 3 5) (2 4 6))
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/+matrix__ 
++matrix function adds two matrices.  
+
+###### Parameters  
+``list`` : ``matrix-a`` : Matrix to sum.   
+``list`` : ``matrix-b`` : Matrix to sum.   
+
+###### Return  
+``list`` : Returns the sum of two matrices.  
+
+###### Exemple  
+Returns the sum of two matrices.  
+
+```lsp
+(setq matrix-a '((1 2) (3 4) (5 6)))
+(setq matrix-b '((1 2) (3 4) (5 6)))
+
+(+matrix matrix-a matrix-b) ; ((2 4) (6 8) (10 12))
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/-matrix__ 
+-matrix function subtracts two matrices.  
+
+###### Parameters  
+``list`` : ``matrix-a`` : Matrix to sub.   
+``list`` : ``matrix-b`` : Matrix to sub.   
+
+###### Return  
+``list`` : Returns the subtraction of two matrices.  
+
+###### Exemple  
+Returns the sum of two matrices.  
+
+```lsp
+(setq matrix-a '((1 2) (3 4) (5 6)))
+(setq matrix-b '((2 1) (8 4) (5 10)))
+
+(-matrix matrix-a matrix-b) ; ((-1 1) (-5 0) (0 -4))
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/*smatrix__ 
+*smatrix function multiplies a scalar by an matrix.  
+
+###### Parameters  
+``int`` : ``scalar`` : Scalar to multiply.  
+``list`` : ``matrix`` : Matrix to multiply.  
+
+###### Return  
+``list`` : Returns a matrix resulting from multiplication.  
+
+###### Exemple  
+Returns a matrix resulting from multiplication.  
+
+```lsp
+(setq matrix '((2 3) (4 6)))
+
+(*smatrix 2 matrix) ; ((4 6) (8 12))
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/*matrix__ 
+*matrix function multiplies two matrices.  
+
+###### Parameters  
+``list`` : ``matrix-a`` : Matrix to multiply.  
+``list`` : ``matrix-b`` : Matrix to multiply.  
+
+###### Return  
+``list`` : Returns a matrix resulting from multiplication.  
+
+###### Exemple  
+Returns a matrix resulting from multiplication.  
+
+```lsp
+(setq matrix-a '((2 3) (4 6)))
+(setq matrix-b '((1 2 0) (2 1 1)))
+
+(*matrix matrix-a matrix-b) ; ((8 9 3) (16 18 6))
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
 
 ### __string__  
 
