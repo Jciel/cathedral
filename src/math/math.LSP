@@ -5,7 +5,7 @@
 ;;;
 ;;; @return bool : If the matrix is a null matrix return T else return nill.
 ;;;
-;;; @exempleDescription	.
+;;; @exempleDescription	If the matrix is a null matrix return T else return nill.
 ;;;
 ;;; @exempleCode (setq matrix '((1 2 3) (4 5 6)))
 ;;; @exempleCode (null-matrix? matrix) ;; nill
@@ -28,7 +28,7 @@
 ;;;
 ;;; @return list : Null matrix MxN.
 ;;;
-;;; @exempleDescription	.
+;;; @exempleDescription	Return a Null matrix MxN.
 ;;;
 ;;; @exempleCode (null-matrix 2 3) ; ((0 0 0) (0 0 0)
 ;;; @exempleCode (null-matrix 4 4) ; ((0 0 0 0) (0 0 0 0) (0 0 0 0) (0 0 0 0))
@@ -384,7 +384,7 @@
   (+vector vector-a (opposite-vector vector-b)))
 
 
-;;; @description opposite-vector returns the opposite vector of a vector.
+;;; @description opposite-vector function returns the opposite vector of a vector.
 ;;;
 ;;; @parameters list : vector : vector to preocess.
 ;;;
@@ -393,17 +393,17 @@
 ;;; @exempleDescription	Returns the opposite vector of a vector.
 ;;;
 ;;; @exempleCode (setq  vector '(7 -3))
-;;; @exempleCode (-vector vector) ; (-7 3)
+;;; @exempleCode (opposite-vector vector) ; (-7 3)
 ;;;
 (defun opposite-vector (vector)
   (mapcar '(lambda (x) (* x -1)) vector))
 
 
-;;; @description norm-vector returns the norm of a vector.
+;;; @description norm-vector function returns the norm of a vector.
 ;;;
 ;;; @parameters list : vector : vector to preocess.
 ;;;
-;;; @return list : Returns the norm of a vector.
+;;; @return int : Returns the norm of a vector.
 ;;;
 ;;; @exempleDescription	Returns the norm of a vector.
 ;;;

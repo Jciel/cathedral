@@ -791,6 +791,150 @@ Returns a matrix resulting from multiplication.
 <br>
 
 
+##### __math/*svector__ 
+*svector function multiplies a scalar by an vector.  
+
+###### Parameters  
+``int`` : ``scalar`` : Scalar to multiply.  
+``list`` : ``vector`` : Vector to multiply.  
+
+###### Return  
+``list`` : Returns a vector resulting from multiplication.  
+
+###### Exemple  
+Returns a vector resulting from multiplication.  
+
+```lsp
+(setq vector '(2 4 6 8))
+
+(*svector 2 vector) ; (4 8 12 16)
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/+vector__ 
++vector function adds two vectors.  
+
+###### Parameters  
+``list`` : ``vector-a`` : vector to sum.   
+``list`` : ``vector-b`` : vector to sum.  
+
+###### Return  
+``list`` : Returns the sum of two vectors.  
+
+###### Exemple  
+Returns the sum of two vectors.  
+
+```lsp
+(setq  vector-a '(1 2 3))
+(setq  vector-b '(1 2 3)
+
+(+vector vector-a vector-b) ; (2 4 6)
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/*i-vector__ 
+*i-vector function result in a internal product between two vectors.  
+
+###### Parameters  
+``list`` : ``vector-a`` : vector to process.  
+``list`` : ``vector-b`` : vector to process.  
+
+###### Return  
+``list`` : Returns a internal product between two vectors.  
+
+###### Exemple  
+Returns a internal product between two vectors.  
+
+```lsp
+(setq  vector-a '(2 3 ))
+(setq  vector-b '(4 3)
+
+(*i-vector vector-a vector-b) ; 17
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/-vector__ 
+-vector function subtracts two vectors.  
+
+###### Parameters  
+``list`` : ``vector-a`` : vector to subtract.  
+``list`` : ``vector-b`` : vector to subtract.  
+
+###### Return  
+``list`` : Returns the subtraction of two vectors.  
+
+###### Exemple  
+Returns the subtraction of two vectors.  
+
+```lsp
+(setq  vector-a '(1 2))
+(setq  vector-b '(1 2)
+
+(-vector vector-a vector-b) ; (0 0)
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/opposite-vector__ 
+opposite-vector function returns the opposite vector of a vector.  
+
+###### Parameters  
+``list`` : ``vector`` : vector to preocess.  
+
+###### Return  
+``list`` : Returns the opposite vector of a vector.  
+
+###### Exemple  
+Returns the opposite vector of a vector.  
+
+```lsp
+(setq  vector '(7 -3))
+
+(opposite-vector vector) ; (-7 3)
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
+##### __math/norm-vector__ 
+norm-vector function returns the norm of a vector.  
+
+###### Parameters  
+``list`` : ``vector`` : vector to preocess.  
+
+###### Return  
+``int`` : Returns the norm of a vector.  
+
+###### Exemple  
+Returns the norm of a vector.   
+
+```lsp
+(setq  vector '(3 -4))
+
+(norm-vector vector) ; 5
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
 
 ### __string__  
 
