@@ -53,7 +53,19 @@ And functions will be available from the autocad command line and its AutoLISP c
   - Date-Time
 	- [date-time](#coredate-time-1)
 - **Math**
-  - [null-matrix?] (#null-matrix?)
+  - [null-matrix?] (#mathnull-matrix?)
+  - [null-matrix] (#mathnull-matrix)
+  - [square-matrix?] (#mathsquare-matrix?)
+  - [diagonal-matrix?] (#mathdiagonal-matrix?)
+  - [nullify-diagonal-matrix] (#mathnullify-diagonal-matrix)
+  - [main-diagonal-matrix] (#mathmain-diagonal-matrix)
+  - [identity-matrix?] (#mathidentity-matrix?)
+  - [identity-matrix] (#mathidentity-matrix)
+  - [transpose-matrix] (#mathtranspose-matrix)
+  - [+matrix] (#math+matrix)
+  - [-matrix] (#math-matrix)
+  - [*smatrix] (#math*smatrix)
+  - [*matrix] (#math*matrix)
 - **String**
   - [str-split](#stringstr-split)
   - [str-is-empty](#stringstr-is-empty)
