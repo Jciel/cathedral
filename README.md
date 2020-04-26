@@ -791,6 +791,29 @@ Returns a matrix resulting from multiplication.
 <br>
 
 
+##### __math/opposite-matrix__ 
+opposite-matrix function returns the opposite matrix from a matrix.  
+
+###### Parameters  
+``list`` : ``matrix`` : Matrix to get opposite.  
+
+###### Return  
+``list`` : Returns the opposite matrix from a matrix.  
+
+###### Exemple  
+Returns the opposite matrix from a matrix.   
+
+```lsp
+(setq matrix '((2 -3) (-4 6)))
+
+(opposite-matrix matrix) ; ((-2 3) (4 -6))
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+
 ##### __math/*svector__ 
 *svector function multiplies a scalar by an vector.  
 

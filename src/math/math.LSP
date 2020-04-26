@@ -308,6 +308,22 @@
   (mapcar 'mult-matrix matrix-a))
 
 
+;;; @description opposite-matrix function returns the opposite matrix from a matrix.
+;;;
+;;; @parameters list : matrix : Matrix to get opposite.
+;;;
+;;; @return list : Returns the opposite matrix from a matrix.
+;;;
+;;; @exempleDescription	Returns the opposite matrix from a matrix.
+;;;
+;;; @exempleCode (setq matrix '((2 -3) (-4 6)))
+;;;
+;;; @exempleCode (opposite-matrix matrix) ; ((-2 3) (4 -6))
+;;;
+(defun opposite-matrix(matrix)
+	(mapcar 'opposite-vector matrix))
+
+
 
 ;;; @description *svector function multiplies a scalar by an vector.
 ;;;
