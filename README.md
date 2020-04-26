@@ -66,6 +66,7 @@ And functions will be available from the autocad command line and its AutoLISP c
   - [-matrix](#math-matrix)
   - [*smatrix](#mathsmatrix)
   - [*matrix](#mathmatrix-1)
+  - [opposite-matrix](#mathopposite-matrix)
   - [*svector](#mathsvector)
   - [+vector](#mathvector)
   - [*i-vector](#mathi-vector)
