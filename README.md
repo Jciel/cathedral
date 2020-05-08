@@ -5,7 +5,7 @@
 <br>
 
 Cathedral is a collection of functions to be used in developing AutoLISP routines for AutoCAD. These functions provide  
-new functionality for data processing in AutoLISP.
+new functionality for data processing in AutoLISP like ``filter``, ``chunk``, ``string split``, ``intersect``, etc.
 
 <br>
 
@@ -26,7 +26,7 @@ After you can load de file ``cathedral-load``
 ```  
 
 Or add the file to load at AutoCAD initialization in ``appload`` configuration.  
-And functions will be available from the autocad command line and its AutoLISP codes.   
+And functions will be available from the autocad command line and its AutoLISP codes.  
 
 
 <br>
