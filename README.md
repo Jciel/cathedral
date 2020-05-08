@@ -9,10 +9,10 @@ new functionality for data processing in AutoLISP.
 
 <br>
 
-### Contribute  
+### Contribute   
+Start the project and share! ;P  
 Fork the project and create a Pull Request :)   
-or send a sugestion in Issues :)    
-Start the project and share! ;P   
+or send a sugestion in Issues :)     
 
 <br>
 
