@@ -434,5 +434,113 @@
 
 
 
+;;; @description det-matrix function returns the determinant from an matrix (matrix must be order 1, 2 or 3).
+;;;
+;;; @parameters list : matrix : matrix to get determinant.
+;;;
+;;; @return int : Returns the determinant of an matrix.
+;;;
+;;; @exempleDescription	Returns the determinant of an matrix.
+;;;
+;;; @exempleCode (setq matrix '((2 1 0) (0 1 0) (1 2 1)))
+;;; @exempleCode (det-matrix matrix) ; 2
+;;;
+(defun det-matrix(matrix)
+  (setq size (length (first matrix)))
+  (cond
+    ((= size 1) (first (first matrix)))
+    ((= size 2) (det-order-2 matrix))
+    ((= size 3) (det-order-3 matrix))
+  )
+)
 
-	
+
+;;; @description det-order-2 function returns the determinant from an matrix order 2.
+;;;
+;;; @parameters list : matrix : matrix to get determinant.
+;;;
+;;; @return int : Returns the determinant of an matrix.
+;;;
+;;; @exempleDescription	Returns the determinant of an matrix.
+;;;
+(defun det-order-2(matrix)
+  (setq row-a (car matrix)
+        row-b (cadr matrix))
+  (- (* (car row-a) (cadr row-b)) (* (cadr row-a) (car row-b))))
+
+
+;;; @description det-order-3 function returns the determinant from an matrix order 3.
+;;;
+;;; @parameters list : matrix : matrix to get determinant.
+;;;
+;;; @return int : Returns the determinant of an matrix.
+;;;
+;;; @exempleDescription	Returns the determinant of an matrix.
+;;;
+(defun det-order-3(matrix / matrix-colls main-colls secondary-colls sum-product min-product)
+  (setq matrix-colls (move-colls-matrix matrix)
+        main-colls (get-main-diagonal-elements matrix-colls)
+		secondary-colls (get-secondary-diagonal-elements matrix-colls))
+  (setq sum-product (apply '+ (mapcar '(lambda (x) (apply '* x)) main-colls))
+        min-product (apply '- (mapcar '(lambda (x) (apply '* x)) secondary-colls)))
+  (- sum-product min-product))
+
+
+;;; @description move-colls-matrix function transpose the first two colls of an matrix
+;;; @description to last colls.
+;;;
+;;; @parameters list : matrix : matrix to get determinant.
+;;;
+;;; @return int : Returns the determinant of an matrix.
+;;;
+;;; @exempleDescription	Returns the determinant of an matrix.
+;;;
+(defun move-colls-matrix(matrix / els)
+  (mapcar '(lambda (row)
+			 (setq els (take 2 row))
+			 (append row els)) matrix))
+
+
+;;; @description get-main-diagonal-elements function get the elements of a main diagonals from a matrix
+;;;
+;;; @parameters list : matrix : matrix to get elements diagonals.
+;;;
+;;; @return list : Returns a list of elements from a main diagonals.
+;;;
+;;; @exempleDescription	Returns a list of elements from a main diagonals.
+;;;
+(defun get-main-diagonal-elements(matrix / start aux r base)
+  (setq index -1
+        base -1)
+  (repeat 3
+    (setq r (mapcar
+	  '(lambda (row)
+	    (setq index (+ index 1))
+	    (nth index row)) matrix))
+	(setq aux (append aux (list r))
+	      index (+ base 1)
+	      base index))
+  aux)
+
+
+;;; @description get-secondary-diagonal-elements function get the elements of a secondary diagonals from a matrix
+;;;
+;;; @parameters list : matrix : matrix to get elements diagonals.
+;;;
+;;; @return list : Returns a list of elements from a secondary diagonals.
+;;;
+;;; @exempleDescription	Returns a list of elements from a secondary diagonals.
+;;;
+(defun get-secondary-diagonal-elements(matrix / start aux r base)
+  (setq index 3
+        base 3)
+  (repeat 3
+    (setq r (mapcar
+	  '(lambda (row)
+	    (setq index (- index 1))
+	    (nth index row)) matrix))
+	(setq aux (append aux (list r))
+	      index (+ base 1)
+	      base index))
+  aux)
+
