@@ -73,6 +73,7 @@ And functions will be available from the autocad command line and its AutoLISP c
   - [-vector](#math-vector)
   - [opposite-vector](#mathopposite-vector)
   - [norm-vector](#mathnorm-vector)
+  - [det-matrix](#mathdet-matrix)
 - **String**
   - [str-split](#stringstr-split)
   - [str-is-empty](#stringstr-is-empty)
@@ -821,7 +822,7 @@ Returns the opposite matrix from a matrix.
 <br>
 
 
-##### __math/*svector__ 
+##### __math/*svector__   
 *svector function multiplies a scalar by an vector.  
 
 ###### Parameters  
@@ -845,7 +846,7 @@ Returns a vector resulting from multiplication.
 <br>
 
 
-##### __math/+vector__ 
+##### __math/+vector__   
 +vector function adds two vectors.  
 
 ###### Parameters  
@@ -870,7 +871,7 @@ Returns the sum of two vectors.
 <br>
 
 
-##### __math/*i-vector__ 
+##### __math/*i-vector__   
 *i-vector function result in a internal product between two vectors.  
 
 ###### Parameters  
@@ -895,7 +896,7 @@ Returns a internal product between two vectors.
 <br>
 
 
-##### __math/-vector__ 
+##### __math/-vector__   
 -vector function subtracts two vectors.  
 
 ###### Parameters  
@@ -920,7 +921,7 @@ Returns the subtraction of two vectors.
 <br>
 
 
-##### __math/opposite-vector__ 
+##### __math/opposite-vector__   
 opposite-vector function returns the opposite vector of a vector.  
 
 ###### Parameters  
@@ -943,7 +944,7 @@ Returns the opposite vector of a vector.
 <br>
 
 
-##### __math/norm-vector__ 
+##### __math/norm-vector__   
 norm-vector function returns the norm of a vector.  
 
 ###### Parameters  
@@ -959,6 +960,28 @@ Returns the norm of a vector.
 (setq  vector '(3 -4))
 
 (norm-vector vector) ; 5
+```
+
+###### [Summary](#summary)
+<br>
+<br>
+
+##### __math/det-matrix__   
+det-matrix function returns the determinant from an matrix (matrix must be order 1, 2 or 3).  
+
+###### Parameters  
+``list`` : ``matrix`` : matrix to get determinant.   
+
+###### Return  
+``int`` : Returns the determinant of an matrix.   
+
+###### Exemple  
+Returns the determinant of an matrix.   
+
+```lsp
+(setq matrix '((2 1 0) (0 1 0) (1 2 1)))
+
+(det-matrix matrix) ; 2
 ```
 
 ###### [Summary](#summary)
