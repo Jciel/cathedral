@@ -4,6 +4,12 @@
 
 <br>
 
+> AutoLISP is a dialect of the programming language Lisp built specifically for use with the full version of AutoCAD and its derivatives, which include AutoCAD Map 3D, AutoCAD Architecture and AutoCAD Mechanical.
+
+> AutoLISP is a small, dynamically scoped, dynamically typed Lisp language dialect with garbage collection, immutable list structure, and settable symbols, lacking in such regular Lisp features as macro system, records definition facilities, arrays, functions with variable number of arguments or let bindings. Aside from the core language, most of the primitive functions are for geometry, accessing AutoCAD's internal DWG database, or manipulation of graphical entities in AutoCAD. (Wikipedia)
+
+<br>
+
 Cathedral is a collection of functions to be used in developing AutoLISP routines for AutoCAD. These functions provide  
 new functionality for data processing in AutoLISP like ``filter``, ``chunk``, ``string split``, ``intersect``, etc.
 
